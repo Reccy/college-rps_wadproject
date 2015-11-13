@@ -26,14 +26,17 @@ body{
 #header{
     background-color:#34495e;
     border-color:#34495e;
-    border-radius:0;
-    margin-bottom:0;
 }
 
 /* Top Menu */
 #top-menu{
     background-color:#2c3e50;
     border-color:#2c3e50;
+}
+
+.menu-bar{
+    border-radius:0;
+    margin-bottom:0;
 }
 
 /* Menu Button */
@@ -58,6 +61,39 @@ body{
     background-color: #2ecc71;
 }
 
+.b-green:hover{
+    background-color: #27ae60;
+}
+
 .b-red{
+    background-color: #e74c3c;
+}
+
+.b-red:hover{
     background-color: #c0392b;
+}
+
+/* Miscellaneous CSS */
+
+#intro-text{
+    color:white;
+    text-align:center;
+    margin-top:50px;
+    font-size:50px;
+}
+
+#help-icon{
+    position:fixed;
+    bottom:15px;
+    right:-10px;
+    opacity:0.5;
+}
+
+#help-icon:hover{
+    cursor:pointer;
+    opacity:1;
+}
+
+#help-icon-img{
+    width:75%;
 }
