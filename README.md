@@ -1,18 +1,14 @@
+     ____            _      ____                         ____       _                        
+    |  _ \ ___   ___| | __ |  _ \ __ _ _ __   ___ _ __  / ___|  ___(_)___ ___  ___  _ __ ___ 
+    | |_) / _ \ / __| |/ / | |_) / _` | '_ \ / _ \ '__| \___ \ / __| / __/ __|/ _ \| '__/ __|
+    |  _ < (_) | (__|   <  |  __/ (_| | |_) |  __/ |     ___) | (__| \__ \__ \ (_) | |  \__ \
+    |_| \_\___/ \___|_|\_\ |_|   \__,_| .__/ \___|_|    |____/ \___|_|___/___/\___/|_|  |___/
+                                      |_|                                                    
 
-     ,-----.,--.                  ,--. ,---.   ,--.,------.  ,------.
-    '  .--./|  | ,---. ,--.,--. ,-|  || o   \  |  ||  .-.  \ |  .---'
-    |  |    |  || .-. ||  ||  |' .-. |`..'  |  |  ||  |  \  :|  `--, 
-    '  '--'\|  |' '-' ''  ''  '\ `-' | .'  /   |  ||  '--'  /|  `---.
-     `-----'`--' `---'  `----'  `---'  `--'    `--'`-------' `------'
-    ----------------------------------------------------------------- 
+Rock, Paper, Scissors!
 
+This is the repo for our college Web Application Development.
+This is an online version of Rock, Paper, Scissors with leaderboard.
 
-Hi there! Welcome to Cloud9 IDE!
-
-To get you started, create some files, play with the terminal,
-or visit http://docs.c9.io for our documentation.
-If you want, you can also go watch some training videos at
-http://www.youtube.com/user/c9ide.
-
-Happy coding!
-The Cloud9 IDE team
+Have fun!
+:-)
