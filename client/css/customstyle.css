@@ -1,0 +1,65 @@
+/* Override fonts */
+h1,h2,h3,h4,h5,h6,p,.menu-button{
+    font-family:sans-serif;
+    font-weight:bold;
+}
+
+/* Background color */
+body{
+    background-color:#95a5a6;
+}
+
+/* Title on top of webpage */
+#title{
+    color:white;
+    font-size:50px;
+}
+
+#title-container{
+    margin-left:auto;
+    margin-right:auto;
+    text-align:center;
+    width:100%;
+}
+
+/* Header */
+#header{
+    background-color:#34495e;
+    border-color:#34495e;
+    border-radius:0;
+    margin-bottom:0;
+}
+
+/* Top Menu */
+#top-menu{
+    background-color:#2c3e50;
+    border-color:#2c3e50;
+}
+
+/* Menu Button */
+.menu-button{
+    display: inline-block;
+    color: white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width:190px;
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.menu-button:hover{
+    color:#DDD;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.b-green{
+    background-color: #2ecc71;
+}
+
+.b-red{
+    background-color: #c0392b;
+}
