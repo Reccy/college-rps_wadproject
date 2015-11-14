@@ -4,6 +4,9 @@ h1,h2,h3,h4,h5,h6,p,.menu-button{
     font-weight:bold;
 }
 
+/* Override button focus */
+button:focus {outline:0;}
+
 /* Background color */
 body{
     background-color:#95a5a6;
@@ -49,12 +52,14 @@ body{
     font-size: 25px;
     margin-top: 20px;
     margin-bottom: 20px;
+    border: 0;
 }
 
 .menu-button:hover{
     color:#DDD;
     cursor: pointer;
     text-decoration: none;
+    border: 0;
 }
 
 .b-green{
@@ -73,6 +78,14 @@ body{
     background-color: #c0392b;
 }
 
+.b-navy{
+    background-color: #2C3E50;
+}
+
+.b-navy:hover{
+    background-color: #34495E;
+}
+
 /* Miscellaneous CSS */
 
 #intro-text{
@@ -80,6 +93,13 @@ body{
     text-align:center;
     margin-top:50px;
     font-size:50px;
+}
+
+#intro-subtext{
+    color:white;
+    text-align:center;
+    margin-top:10px;
+    font-size:25px;
 }
 
 #help-icon{
@@ -96,4 +116,18 @@ body{
 
 #help-icon-img{
     width:75%;
+}
+
+/* CSS for loading icon */
+#loading{
+    position: fixed;
+	left: 0px;
+	top: 0px;
+	background: url("../img/loading.gif") center no-repeat #fff;
+	background-size: 50px;
+	background-color: rgba(12,23,45,0.6);
+	opacity:1;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
 }

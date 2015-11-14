@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Rock, Paper, Scissors!</title>
+      <title>Rock, Paper, Scissors!</title>
         
-        <!-- Bootstrap -->
-        <link href="client/css/bootstrap.min.css" rel="stylesheet">
-        <link href="client/css/customstyle.css" rel="stylesheet">
+      <!-- Bootstrap -->
+      <link href="client/css/bootstrap.min.css" rel="stylesheet">
+      <link href="client/css/customstyle.css" rel="stylesheet">
     </head>
     <body>
       
@@ -22,14 +22,15 @@
         <div class="container-fluid">
           <!-- Brand and toggle get grouped for better mobile display -->
           <div id="title-container" class="navbar-header">
-            <a class="menu-button b-green">Login</a>
-            <a class="menu-button b-red">Register</a>
+            <button id="loginBtn" class="menu-button b-green" onclick="loginBtnClicked();">Login</button>
+            <button id="registerBtn" class="menu-button b-red" onclick="registerBtnClicked();">Register</button>
           </div>
         </div><!-- /.container-fluid -->
       </div>
       
       <!-- Body -->
-      <div>
+      <div id="loading"></div>
+      <div id="body">
         <p id="intro-text">Hi there!<br><br>Want to play some Rock, Paper, Scissors?<br>Login or Register to access the game!<br><br>Have fun! :-)<br><br>(P.S. It's free!)</p>
       </div>
       
@@ -39,7 +40,9 @@
       <!-- Scripts -->
       <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+      <!-- AJAX script for one-page functionality -->
+      <script src="client/js/ajax.js"></script>
       <!-- Include all compiled plugins (below), or include individual files as needed -->
-      <script src="clent/js/bootstrap.min.js"></script>
+      <script src="client/js/bootstrap.min.js"></script>
     </body>
 </html>
