@@ -3,19 +3,20 @@
 // A very basic web server in node.js
 // Stolen from: Node.js for Front-End Developers by Garann Means (p. 9-10) 
 
-var port = process.env.IP;
-var serverUrl = process.env.PORT;
+var port = process.env.PORT;
+var serverUrl = process.env.IP;
 
 var http = require("http");
 var path = require("path"); 
 var fs = require("fs"); 		
+var $ = require('jquery');
 
 console.log("Starting web server at " + serverUrl + ":" + port);
 
 http.createServer( function(req, res) {
 
 	var now = new Date();
-
+	
 	var filename = req.url || "index.html";
 	var ext = path.extname(filename);
 	var localPath = __dirname;
@@ -45,7 +46,7 @@ http.createServer( function(req, res) {
 		});
 
 	} else {
-		console.log("Invalid file extension detected: " + ext)
+		console.log("Invalid file extension detected: " + ext);
 	}
 
 }).listen(port, serverUrl);
