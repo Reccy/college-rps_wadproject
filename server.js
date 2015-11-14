@@ -9,7 +9,6 @@ var serverUrl = process.env.IP;
 var http = require("http");
 var path = require("path"); 
 var fs = require("fs"); 		
-var $ = require('jquery');
 
 console.log("Starting web server at " + serverUrl + ":" + port);
 
@@ -21,6 +20,7 @@ http.createServer( function(req, res) {
 	var ext = path.extname(filename);
 	var localPath = __dirname;
 	var validExtensions = {
+		"" : "text/html",
 		".html" : "text/html",			
 		".js": "application/javascript", 
 		".css": "text/css",
@@ -30,14 +30,20 @@ http.createServer( function(req, res) {
 		".png": "image/png"
 	};
 	var isValidExt = validExtensions[ext];
-
+	
 	if (isValidExt) {
 		
 		localPath += filename;
 		fs.exists(localPath, function(exists) {
 			if(exists) {
-				console.log("Serving file: " + localPath);
-				getFile(localPath, res, isValidExt);
+				if(filename == "/"){ //If filename is '/' then load index.html
+					console.log("Serving file: " + localPath + "index.html"); 
+					getFile("/home/ubuntu/workspace/index.html", res, isValidExt);
+				} else {
+					console.log("Serving file: " + localPath); 
+					getFile(localPath, res, isValidExt);
+				}
+				
 			} else {
 				console.log("File not found: " + localPath);
 				res.writeHead(404);
