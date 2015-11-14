@@ -34,3 +34,11 @@ function registerBtnClicked(){
     $("#loginBtn").css("display","inline-block");
     $("#registerBtn").css("display","none");
 }
+
+function closeAboutBtnClicked(){
+    $("#about-us").hide();
+}
+
+function aboutBtnClicked(){
+    $("#about-us").show();
+}

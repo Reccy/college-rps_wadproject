@@ -30,12 +30,18 @@
       
       <!-- Body -->
       <div id="loading"></div>
+      <div id="about-us">
+        <div>
+          <p>Game designed by:<br>Aaron Meaney<br>Alex Corcoran<br>Mark Hayden<br><br>Having problems? Need help?<br>Too bad.<br>This is a college project.<br>:-)</p>
+          <button id="closeAboutBtn" class="menu-button b-orange" onclick="closeAboutBtnClicked();">Close</button>
+        </div>
+      </div>
       <div id="body">
         <p id="intro-text">Hi there!<br><br>Want to play some Rock, Paper, Scissors?<br>Login or Register to access the game!<br><br>Have fun! :-)<br><br>(P.S. It's free!)</p>
       </div>
       
       <!-- Footer -->
-      <a id="help-icon"><img id="help-icon-img" src="client/img/helpicon.png"></img></a>
+      <button id="help-icon" onclick="aboutBtnClicked();"><img id="help-icon-img" src="client/img/helpicon.png"></img></button>
       
       <!-- Scripts -->
       <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
