@@ -15,8 +15,26 @@ body{
 /* Title on top of webpage */
 #title{
     color:white;
-    font-size:50px;
 }
+
+@media screen and (max-width: 480px){
+    #title{
+        font-size:20px;
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 1366px){
+    #title{
+        font-size:36px;
+    }
+}
+
+@media screen and (min-width: 1367px){
+    #title{
+        font-size:50px;
+    }
+}
+
 
 #title-container{
     margin-left:auto;
@@ -43,15 +61,42 @@ body{
 }
 
 /* Menu Button */
+@media screen and (max-width: 480px){
+    .menu-button{
+        padding-top: 2px;
+        padding-bottom: 2px;
+        width:100px;
+        font-size: 15px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 1366px){
+    .menu-button{
+        padding-top: 5px;
+        padding-bottom: 5px;
+        width:150px;
+        font-size: 20px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (min-width: 1367px){
+    .menu-button{
+        padding-top: 5px;
+        padding-bottom: 5px;
+        width:190px;
+        font-size: 25px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+}
+
 .menu-button{
     display: inline-block;
     color: white;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    width:190px;
-    font-size: 25px;
-    margin-top: 20px;
-    margin-bottom: 20px;
     border: 0;
 }
 
@@ -96,18 +141,54 @@ body{
 
 /* Intro text CSS */
 
+@media screen and (max-width: 480px){
+    #intro-text{
+        margin-top:50px;
+        font-size:20px;
+    }
+
+    #intro-subtext{
+        margin-top:10px;
+        font-size:15px;
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 1366px){
+    #intro-text{
+        margin-top:30px;
+        font-size:30px;
+    }
+
+    #intro-subtext{
+        margin-top:10px;
+        font-size:20px;
+    }
+}
+
+@media screen and (min-width: 1367px){
+    #intro-text{
+        color:white;
+        text-align:center;
+        margin-top:50px;
+        font-size:50px;
+    }
+    
+    #intro-subtext{
+        color:white;
+        text-align:center;
+        margin-top:10px;
+        font-size:25px;
+    }
+}
+
 #intro-text{
     color:white;
     text-align:center;
-    margin-top:50px;
-    font-size:50px;
 }
 
 #intro-subtext{
     color:white;
     text-align:center;
-    margin-top:10px;
-    font-size:25px;
 }
 
 /* Help CSS */
@@ -127,40 +208,36 @@ body{
     border:transparent;
 }
 
-#help-icon-img{
-    width:75%;
+@media screen and (max-width: 480px){
+    #help-icon-img{
+        width:33%;
+    }
 }
 
-#about-us{
-    display:none;
-    width:100%;
-    height:100%;
-    left:0;
-    top:0;
-    z-index:9999;
-    position:fixed;
-    background-color: #9b59b6; /* Fallback color */
-    background-color: rgba(255,255,255,0.2);
-    opacity:1;
+@media screen and (min-width: 481px) and (max-width: 1366px){
+    #help-icon-img{
+        width:60%;
+    }
 }
 
-#about-us>div{
-    /* Got CSS from https://css-tricks.com/centering-percentage-widthheight-elements/ */
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 40%;
-    height: 50%;
-    color:white;
-    text-align:center;
-    font-size: 30px;
+@media screen and (min-width: 1367px){
+    #help-icon-img{
+        width:75%;
+    }
+}
+
+/* Modal-content */
+.modal-dialog,.modal-content,.modal-footer{
     background-color:#9b59b6;
-    opacity:1;
+    color:white;
+    font-family:sans-serif;
+    border:0px;
+    text-align:center;
+    box-shadow: none;
 }
 
-#about-us>div>p{
-    margin-top:20px;
+.modal-header,.modal-body,.modal-footer{
+    border:0;
 }
 
 /* CSS for loading icon */
@@ -179,15 +256,41 @@ body{
 }
 
 /* Big Checkbox */
-.checkbox-inline{
-    font-size:25px;
-    display:block;
+
+@media screen and (max-width: 480px){
+    .checkbox-inline{
+        font-size:15px;
+    }
+    
+    .checkbox-inline>input{
+        width:15px;
+        height:15px;
+        margin-left:-15;
+    }
 }
 
-.checkbox-inline>input{
-    width:30px;
-    height:30px;
-    margin-left:-30;
+@media screen and (min-width: 481px) and (max-width: 1366px){
+    .checkbox-inline{
+        font-size:20px;
+    }
+    
+    .checkbox-inline>input{
+        width:20px;
+        height:20px;
+        margin-left:-20;
+    }
+}
+
+@media screen and (min-width: 1367px){
+    .checkbox-inline{
+        font-size:25px;
+    }
+    
+    .checkbox-inline>input{
+        width:30px;
+        height:30px;
+        margin-left:-30;
+    }
 }
 
 .checkbox-inline>p{
@@ -203,11 +306,29 @@ body{
 }
 
 /* Change input style*/
+
+@media screen and (max-width: 480px){
+    /* Nothing here because CSS defaults */
+}
+
+@media screen and (min-width: 481px) and (max-width: 1366px){
+    .input-field{
+        line-height:2em;
+        font-size:20px;
+        height:2em;
+    }
+}
+
+@media screen and (min-width: 1367px){
+    .input-field{
+        line-height:2em;
+        font-size:25px;
+        height:2em;
+    }
+}
+
 .input-field{
     font-family: sans-serif;
     border:0px;
     border-radius:0;
-    line-height:2em;
-    font-size:25px;
-    height:2em;
 }

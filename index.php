@@ -30,18 +30,28 @@
       
       <!-- Body -->
       <div id="loading"></div>
-      <div id="about-us">
-        <div>
-          <p>Game designed by:<br>Aaron Meaney<br>Alex Corcoran<br>Mark Hayden<br><br>Having problems? Need help?<br>Too bad.<br>This is a college project.<br>:-)</p>
-          <button id="closeAboutBtn" class="menu-button b-orange" onclick="closeAboutBtnClicked();">Close</button>
+      <div id="about-us" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Game designed by:</h4>
+            </div>
+            <div class="modal-body">
+              <p>Aaron Meaney<br>Alex Corcoran<br>Mark Hayden<br><br>Having problems? Need help?<br>Too bad.<br>This is a college project.<br>:-)</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="menu-button b-orange" data-dismiss="modal">Close</button>
+            </div>
+          </div>
         </div>
       </div>
       <div id="body">
-        <p id="intro-text">Hi there!<br><br>Want to play some Rock, Paper, Scissors?<br>Login or Register to access the game!<br><br>Have fun! :-)<br><br>(P.S. It's free!)</p>
+        <p id="intro-text" >Hi there!<br><br>Want to play some Rock, Paper, Scissors?<br>Login or Register to access the game!<br><br>Have fun! :-)<br><br>(P.S. It's free!)</p>
       </div>
       
       <!-- Footer -->
-      <button id="help-icon" onclick="aboutBtnClicked();"><img id="help-icon-img" src="client/img/helpicon.png"></img></button>
+      <button id="help-icon" data-toggle="modal" data-target="#about-us"><img id="help-icon-img" src="client/img/helpicon.png"></img></button>
       
       <!-- Scripts -->
       <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

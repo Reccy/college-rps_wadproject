@@ -4,10 +4,10 @@ $(document).ready(function(){
     $("#loading").hide();
 });
 
-/* Disable caching of AJAX responses - won't work with node.js
+// Disable caching of AJAX responses
 $.ajaxSetup({
     cache: false
-}); */
+});
 
 // When starting an AJAX request, show the loading screen
 $(document).ajaxStart(function(){
