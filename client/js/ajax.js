@@ -42,10 +42,32 @@ function registerBtnClicked(){
     $("#registerBtn").css("display","none");
 }
 
-function closeAboutBtnClicked(){
-    $("#about-us").hide();
+//Send register form to server
+function registerSend(){
+    var user = $("#userName").val();
+    var pass = $("#userPassword").val();
+    var checked;
+    if($("#userChecked>input").prop("checked")){
+        checked = true;
+    } else {
+        checked = false;
+    }
+    
+    $.post("../../server/formhandler.php",data,function(returnData){
+        console.log("Returned data: " + returnData);
+    });
+    
+    alert("Username: " + user + "\n" + "Password:" + pass + "\n" + "Checked: " + checked);
 }
 
-function aboutBtnClicked(){
-    $("#about-us").show();
+//Send login form to server
+function loginSend(){
+    var user = $("#userName").val();
+    var pass = $("#userPassword").val();
+    var data = {"Username":user,"Password":pass};
+    
+    $.post("../../server/formhandler.php",data,function(returnData){
+        console.log("Returned data: " + returnData);
+    });
+    alert("Username: " + user + "\n" + "Password:" + pass);
 }
