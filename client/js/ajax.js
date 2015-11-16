@@ -14,6 +14,13 @@ $(document).ajaxStart(function(){
   $("#loading").show();
 });
 
+// When something goes wrong with AJAX, display an error.
+$( document ).ajaxError(function() {
+    $("#top-menu").hide();
+    $("body").html("<p id=\"intro-text\">Something went wrong! :'(</p><p id=\"intro-subtext\">There was a problem loading the application.<br />The web server could be down or your internet connection might be down.<br />Please try again later!</p>");
+    $("body").css("background-color","#2c3e50");
+});
+
 // When an AJAX request is complete, hide the loading screen
 $( document ).ajaxComplete(function() {
   $("#loading").hide();
