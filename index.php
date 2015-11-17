@@ -22,8 +22,17 @@
         <div class="container-fluid">
           <!-- Brand and toggle get grouped for better mobile display -->
           <div id="title-container" class="navbar-header">
+            <!-- Username text -->
+            <p id="usernameText" class="navbar-left">Let's play a game,<br/><span class="usernameReplace">USERNAME_HERE!</span></p>
+            <!-- Logged in buttons -->
+            <button id="leaderboardsBtn" class="menu-button b-orange" onclick="leaderboardsBtnClicked();">Leaderboard</button>
+            <button id="playBtn" class="menu-button b-green" onclick="playBtnClicked();">Play Game</button>
+            <button id="logoutBtn" class="menu-button b-red" onclick="logoutBtnClicked();">Logout</button>
+            <!-- Logged out buttons -->
             <button id="loginBtn" class="menu-button b-green" onclick="loginBtnClicked();">Login</button>
             <button id="registerBtn" class="menu-button b-red" onclick="registerBtnClicked();">Register</button>
+            <!-- Statistics display -->
+            <p id="stats" class="navbar-right">Total Wins: <span class="winsReplace">0</span><br/>Total Losses: <span class="lossesReplace">0</span><br/>Total Games: <span class="gamesReplace">0</span></p>
           </div>
         </div><!-- /.container-fluid -->
       </div>

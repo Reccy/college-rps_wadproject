@@ -1,7 +1,18 @@
+//Global variables
+var _username;
+var _wins;
+var _losses;
+var _streak;
+var _ratio;
+var _totalGames;
+
 // When jQuery is ready, hide the loading screen
 $(document).ready(function(){
     console.log("JQuery is ready!");
     $("#loading").hide();
+    $("#playBtn").hide();
+    $("#leaderboardsBtn").hide();
+    $("#logoutBtn").hide();
 });
 
 // Disable caching of AJAX responses
@@ -24,6 +35,26 @@ $( document ).ajaxComplete(function() {
   $("#loading").hide();
 });
 
+// Responsive code
+$(window).resize(function() {
+    if ($(window).width() < 720) {
+        $('#usernameText').removeClass("navbar-left");
+        $('#stats').removeClass("navbar-right");
+        if($("#usernameText").css("display") != "none"){
+            $('#usernameText').css('display','block');
+            $('#stats').css('display','block');
+        }
+    } else {
+        $('#usernameText').addClass("navbar-left");
+        $('#stats').addClass("navbar-right");
+        if($("#usernameText").css("display") != "none"){
+            $('#usernameText').css('display','inline-block');
+            $('#stats').css('display','inline-block');
+        }
+    }
+});
+
+// Displays error html when something goes drastically wrong
 function displayError(){
     $("#top-menu").hide();
     $("body").html("<p id=\"intro-text\">Something went wrong! :'(</p><p id=\"intro-subtext\">There was a problem loading the application.<br />If this problem keeps occuring, please contact the site administrator.<br />Please try again later!</p>");
@@ -46,30 +77,41 @@ function registerBtnClicked(){
     $("#registerBtn").css("display","none");
 }
 
+//When the logout button is clicked, load the original welcome screen
+function logoutBtnClicked(){
+    $("#body").load("client/html/landing.html");
+    $("body").css("background-color","#95A5A6");
+    $("#logoutBtn").hide();
+    $("#leaderboardsBtn").hide();
+    $("#playBtn").hide();
+    $("#loginBtn").show();
+    $("#registerBtn").show();
+}
+
 //Send register form to server
 function registerSend(){
     var user = $("#userName").val();
     var pass = $("#userPassword").val();
     var checked;
     if($("#userChecked>input").prop("checked")){
-        checked = "true";
+        checked = true;
     } else {
-        checked = "false";
+        checked = false;
     }
     
     var data = {"Username":user,"Password":pass,"Checked":checked};
     
     $.post("../../server/registerform.php",data,function(returnData){
         console.log(returnData);
-        if(returnData == "user_exists"){
+        if(returnData == "user_exists"){ //If the username already exists, alert the user.
             alert("A user already exists with this username!");
-        } else if(returnData == "user_added"){
+        } else if(returnData == "user_added"){ //If the user is succesfully added, alert the user.
             alert("You have successfully registered!");
-        } else if(returnData == "error_special_chars"){
+        } else if(returnData == "error_special_chars"){ // If the user types in an illegal character, alert them.
             alert("Please only type in alphanumeric characters. E.g. a-z 0-9");
-        } else if(returnData == "error_unchecked_box"){
+        } else if(returnData == "error_unchecked_box"){ // If the user doesn't accept the password condition, alert them.
             alert("You must accept the condition to use a unique password to register.");
-        }else if(returnData =="error_unknown"){
+        }else if(returnData =="error_unknown"){ // If something goes terribly wrong, alert the user
             displayError();
         }
     });
@@ -82,16 +124,48 @@ function loginSend(){
     var data = {"Username":user,"Password":pass};
     
     $.post("../../server/loginform.php",data,function(returnData){
-        if(returnData == "error_special_chars"){
+        if(returnData == "error_special_chars"){ // If the user types in an illegal character, alert them.
             alert("Please only type in alphanumeric characters. E.g. a-z 0-9");
-        } else if(returnData == "password_match"){
+        } else if(returnData == "password_match"){ // If the password matches, login the user
             $("#body").load("client/html/welcome.html");
             $("body").css("background-color","#2ecc71");
             $("#loginBtn").css("display","none");
             $("#registerBtn").css("display","none");
-        } else if(returnData == "password_mismatch"){
+            $("#leaderboardsBtn").show();
+            $("#playBtn").show();
+            $("#logoutBtn").show();
+            
+            $.post("../../server/userdata.php",{"Username":user},function(userData){ //POST to get the other details from the user
+                if(userData == "error_unknown"){
+                    displayError();
+                } else {
+                    var userJSON = JSON.parse(userData);
+                    
+                    _username = userJSON.username;
+                    _wins = userJSON.wins;
+                    _losses = userJSON.losses;
+                    _streak = userJSON.streak;
+                    _ratio = userJSON.ratio;
+                    
+                    _totalGames = parseInt(_wins) + parseInt(_losses);
+                    
+                    $(".usernameReplace").html(_username);
+                    $(".winsReplace").html(_wins);
+                    $(".lossesReplace").html(_losses);
+                    $(".gamesReplace").html(_totalGames);
+                    
+                    $("#leaderboardsBtn").show();
+                    $("#logoutBtn").show();
+                    $("#playBtn").show();
+                    
+                    $("#usernameText").show();
+                    $("#stats").show();
+                }
+            });
+            
+        } else if(returnData == "password_mismatch"){ // If the username or password doesn't match, alert the user
             alert("Username/Password Incorrect!");
-        } else if(returnData == "error_unknown"){
+        } else if(returnData == "error_unknown"){ // If something goes terribly wrong, alert the user
             displayError();
         }
     });

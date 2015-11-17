@@ -6,22 +6,22 @@
     $username = trim($username);
     $password = trim($password); //Trim details for sanitization
     
-    if (preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $username))
+    if (preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $username)) //Check username for special characters
     {
         echo"error_special_chars";
         exit();
     }
     
-    if (preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $password))
+    if (preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $password)) //Check password for special characters
     {
         echo"error_special_chars";
         exit();
     }
     
-    if($checked == "false"){
+    if($checked == "false"){ //If box is not checked, alert user
         echo"error_unchecked_box";
         exit();
-    } else if($checked != "true" && $checked != "false"){
+    } else if($checked != "true" && $checked != "false"){ //If the box sends a non-boolean value, display error
         echo"error_unknown";
         exit();
     }
