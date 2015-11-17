@@ -48,16 +48,16 @@ function registerSend(){
     var pass = $("#userPassword").val();
     var checked;
     if($("#userChecked>input").prop("checked")){
-        checked = true;
+        checked = "true";
     } else {
-        checked = false;
+        checked = "false";
     }
     
-    $.post("../../server/formhandler.php",data,function(returnData){
+    var data = {"Username":user,"Password":pass,"Checked":checked};
+    
+    $.post("../../server/registerform.php",data,function(returnData){
         console.log("Returned data: " + returnData);
     });
-    
-    alert("Username: " + user + "\n" + "Password:" + pass + "\n" + "Checked: " + checked);
 }
 
 //Send login form to server
@@ -66,8 +66,12 @@ function loginSend(){
     var pass = $("#userPassword").val();
     var data = {"Username":user,"Password":pass};
     
-    $.post("../../server/formhandler.php",data,function(returnData){
-        console.log("Returned data: " + returnData);
+    $.post("../../server/loginform.php",data,function(returnData){
+        if(returnData == "password_match"){
+            $("#body").load("client/html/welcome.html");
+            $("body").css("background-color","#2ecc71");
+            $("#loginBtn").css("display","none");
+            $("#registerBtn").css("display","none");
+        }
     });
-    alert("Username: " + user + "\n" + "Password:" + pass);
 }

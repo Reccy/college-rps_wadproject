@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<users>
+  <user>
+    <details>
+      <username>Reccy</username>
+      <password>$2y$10$1OLWM78V/F/GlaguVOGPjOiQonBsFFKJXwa8zBnEdA7fiYa.iACO2</password> <!-- verifyMe -->
+    </details>
+    <score>
+      <wins>0</wins>
+      <losses>0</losses>
+      <streaks>0</streaks>
+      <ratio>0</ratio>
+    </score>
+  </user>
+</users>
