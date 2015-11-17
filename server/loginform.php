@@ -17,8 +17,10 @@
                 }
             }
         }
+        echo "password_mismatch";
+        exit();
     } else {
-        echo "Something went wrong!";
+        echo "error_unknown";
         exit();
     }
 ?>

@@ -16,15 +16,19 @@ $(document).ajaxStart(function(){
 
 // When something goes wrong with AJAX, display an error.
 $( document ).ajaxError(function() {
-    $("#top-menu").hide();
-    $("body").html("<p id=\"intro-text\">Something went wrong! :'(</p><p id=\"intro-subtext\">There was a problem loading the application.<br />The web server could be down or your internet connection might be down.<br />Please try again later!</p>");
-    $("body").css("background-color","#2c3e50");
+    displayError();
 });
 
 // When an AJAX request is complete, hide the loading screen
 $( document ).ajaxComplete(function() {
   $("#loading").hide();
 });
+
+function displayError(){
+    $("#top-menu").hide();
+    $("body").html("<p id=\"intro-text\">Something went wrong! :'(</p><p id=\"intro-subtext\">There was a problem loading the application.<br />If this problem keeps occuring, please contact the site administrator.<br />Please try again later!</p>");
+    $("body").css("background-color","#2c3e50");
+}
 
 //When the login button is clicked, load login.html
 function loginBtnClicked(){
@@ -56,7 +60,14 @@ function registerSend(){
     var data = {"Username":user,"Password":pass,"Checked":checked};
     
     $.post("../../server/registerform.php",data,function(returnData){
-        console.log("Returned data: " + returnData);
+        console.log(returnData);
+        if(returnData == "user_exists"){
+            alert("A user already exists with this username!");
+        } else if(returnData == "user_added"){
+            alert("You have successfully registered!");
+        } else if(returnData =="error_unknown"){
+            displayError();
+        }
     });
 }
 
@@ -72,6 +83,10 @@ function loginSend(){
             $("body").css("background-color","#2ecc71");
             $("#loginBtn").css("display","none");
             $("#registerBtn").css("display","none");
+        } else if(returnData == "password_mismatch"){
+            alert("Username/Password Incorrect!");
+        } else if(returnData == "error_unknown"){
+            displayError();
         }
     });
 }

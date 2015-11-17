@@ -8,6 +8,14 @@
     if (file_exists('users.xml')) {
         $xml = simplexml_load_file('users.xml');
         $sxe = new SimpleXMLElement($xml->asXML());
+        
+        for($i = 0; $i < $sxe->count(); $i++){
+            if($sxe->user[$i]->details->username == $username){
+                echo "user_exists";
+                exit();
+            }
+        }
+        
         $user = $sxe->addChild("user");
         $details = $user->addChild("details");
         $score = $user->addChild("score");
@@ -18,7 +26,7 @@
         $score->addChild("streaks",0);
         $score->addChild("ratio",0);
     } else {
-        echo "Something went wrong!";
+        echo "error_unknown";
         exit();
     }
 
@@ -29,4 +37,7 @@
     $dom->formatOutput = true;
     $dom->loadXML($sxe->asXML());
     $dom->save("users.xml");
+    
+    echo "user_added";
+    exit();
 ?>
