@@ -65,7 +65,11 @@ function registerSend(){
             alert("A user already exists with this username!");
         } else if(returnData == "user_added"){
             alert("You have successfully registered!");
-        } else if(returnData =="error_unknown"){
+        } else if(returnData == "error_special_chars"){
+            alert("Please only type in alphanumeric characters. E.g. a-z 0-9");
+        } else if(returnData == "error_unchecked_box"){
+            alert("You must accept the condition to use a unique password to register.");
+        }else if(returnData =="error_unknown"){
             displayError();
         }
     });
@@ -78,7 +82,9 @@ function loginSend(){
     var data = {"Username":user,"Password":pass};
     
     $.post("../../server/loginform.php",data,function(returnData){
-        if(returnData == "password_match"){
+        if(returnData == "error_special_chars"){
+            alert("Please only type in alphanumeric characters. E.g. a-z 0-9");
+        } else if(returnData == "password_match"){
             $("#body").load("client/html/welcome.html");
             $("body").css("background-color","#2ecc71");
             $("#loginBtn").css("display","none");
