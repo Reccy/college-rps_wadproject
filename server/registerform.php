@@ -1,6 +1,7 @@
 <?php
     $username = $_POST["Username"]; //Get username
     $password = $_POST["Password"]; //Get password
+    $password_conf = $_POST["ConfirmPassword"]; //Get password in second field
     $checked = $_POST["Checked"]; //Get if the user checked the box (true/false)
     
     $username = trim($username);
@@ -13,6 +14,11 @@
     
     if(strlen($password) < 6){
         echo("error_password_length");
+        exit();
+    }
+    
+    if($password != $password_conf){
+        echo("error_password_confirm");
         exit();
     }
     

@@ -112,6 +112,7 @@ function logoutBtnClicked(){
 function registerSend(){
     var user = $("#userName").val();
     var pass = $("#userPassword").val();
+    var passconf = $("#userPasswordConfirm").val();
     var checked;
     if($("#userChecked>input").prop("checked")){
         checked = true;
@@ -119,11 +120,13 @@ function registerSend(){
         checked = false;
     }
     
-    var data = {"Username":user,"Password":pass,"Checked":checked};
+    var data = {"Username":user,"Password":pass,"ConfirmPassword":passconf,"Checked":checked};
     
     $.post("../../server/registerform.php",data,function(returnData){
         console.log(returnData);
-        if(returnData == "user_exists"){ //If the username already exists, alert the user.
+        if(returnData == "error_password_confirm"){ //If the user doesn't confirm their password, alert the user
+            registerError("Please verify that your password is the same in both fields!");
+        } else if(returnData == "user_exists"){ //If the username already exists, alert the user.
             registerError("A user already exists with this username!");
         } else if(returnData == "user_added"){ //If the user is succesfully added, alert the user.
             registerError("You have successfully registered!");
