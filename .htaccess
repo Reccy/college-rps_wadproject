@@ -12,3 +12,15 @@ RewriteRule ^(.*)$ index.php?$1 [L,QSA]
 
 RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s(.*)/index\.php [NC]
 RewriteRule ^ %1 [R=301,L]
+
+
+# Prevent user from accessing some other files
+<Files "readme.md">
+Order Allow,Deny
+Deny from all
+</Files>
+
+<Files ".htaccess">
+Order Allow,Deny
+Deny from all
+</Files>

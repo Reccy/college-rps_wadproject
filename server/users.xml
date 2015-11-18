@@ -13,4 +13,17 @@
       <ratio>2.4</ratio>
     </score>
   </user>
+  <user>
+    <details>
+      <username>Test</username>
+      <password>$2y$10$353Exklxbkw0tpL7uZNDPOG1S.ZkDqoImNvY9w37pCBoT9dVFdU.a</password>
+      <!-- testPw -->
+    </details>
+    <score>
+      <wins>0</wins>
+      <losses>0</losses>
+      <streaks>0</streaks>
+      <ratio>0</ratio>
+    </score>
+  </user>
 </users>

@@ -6,6 +6,16 @@
     $username = trim($username);
     $password = trim($password); //Trim details for sanitization
     
+    if(strlen($username) < 4){
+        echo("error_username_length");
+        exit();
+    }
+    
+    if(strlen($password) < 6){
+        echo("error_password_length");
+        exit();
+    }
+    
     if (preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $username)) //Check username for special characters
     {
         echo"error_special_chars";

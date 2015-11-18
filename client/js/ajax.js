@@ -61,6 +61,16 @@ function displayError(){
     $("body").css("background-color","#2c3e50");
 }
 
+// Display error on login page
+function loginError(error){
+    $("#loginStatus").html(error);
+}
+
+// Display error on register page
+function registerError(error){
+    $("#registerStatus").html(error);
+}
+
 //When the login button is clicked, load login.html
 function loginBtnClicked(){
     $("#body").load("client/html/login.html");
@@ -77,6 +87,14 @@ function registerBtnClicked(){
     $("#registerBtn").css("display","none");
 }
 
+function playBtnClicked(){
+    alert("Game coming soon!");
+}
+
+function leaderboardsBtnClicked(){
+    alert("Leaderboard coming soon!");
+}
+
 //When the logout button is clicked, load the original welcome screen
 function logoutBtnClicked(){
     $("#body").load("client/html/landing.html");
@@ -86,6 +104,8 @@ function logoutBtnClicked(){
     $("#playBtn").hide();
     $("#loginBtn").show();
     $("#registerBtn").show();
+    $("#usernameText").hide();
+    $("#stats").hide();
 }
 
 //Send register form to server
@@ -104,14 +124,18 @@ function registerSend(){
     $.post("../../server/registerform.php",data,function(returnData){
         console.log(returnData);
         if(returnData == "user_exists"){ //If the username already exists, alert the user.
-            alert("A user already exists with this username!");
+            registerError("A user already exists with this username!");
         } else if(returnData == "user_added"){ //If the user is succesfully added, alert the user.
-            alert("You have successfully registered!");
+            registerError("You have successfully registered!");
         } else if(returnData == "error_special_chars"){ // If the user types in an illegal character, alert them.
-            alert("Please only type in alphanumeric characters. E.g. a-z 0-9");
+            registerError("Please only type in alphanumeric characters. E.g. a-z 0-9");
         } else if(returnData == "error_unchecked_box"){ // If the user doesn't accept the password condition, alert them.
-            alert("You must accept the condition to use a unique password to register.");
-        }else if(returnData =="error_unknown"){ // If something goes terribly wrong, alert the user
+            registerError("You must accept the condition to use a unique password to register.");
+        } else if(returnData == "error_username_length"){
+            registerError("Your username must be at least 4 characters long");
+        } else if(returnData == "error_password_length"){
+            registerError("Your password must be at least 6 characters long");
+        } else if(returnData =="error_unknown"){ // If something goes terribly wrong, alert the user
             displayError();
         }
     });
@@ -125,7 +149,7 @@ function loginSend(){
     
     $.post("../../server/loginform.php",data,function(returnData){
         if(returnData == "error_special_chars"){ // If the user types in an illegal character, alert them.
-            alert("Please only type in alphanumeric characters. E.g. a-z 0-9");
+            loginError("Please only type in alphanumeric characters. E.g. a-z 0-9");
         } else if(returnData == "password_match"){ // If the password matches, login the user
             $("#body").load("client/html/welcome.html");
             $("body").css("background-color","#2ecc71");
@@ -164,7 +188,7 @@ function loginSend(){
             });
             
         } else if(returnData == "password_mismatch"){ // If the username or password doesn't match, alert the user
-            alert("Username/Password Incorrect!");
+            loginError("Username/Password Incorrect!");
         } else if(returnData == "error_unknown"){ // If something goes terribly wrong, alert the user
             displayError();
         }
