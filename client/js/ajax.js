@@ -88,11 +88,12 @@ function registerBtnClicked(){
 }
 
 function playBtnClicked(){
-    alert("Game coming soon!");
+    $("#body").load("client/html/game.html");
+    
 }
 
 function leaderboardsBtnClicked(){
-    alert("Leaderboard coming soon!");
+    $("#body").load("client/html/leaderboard.html");
 }
 
 //When the logout button is clicked, load the original welcome screen
