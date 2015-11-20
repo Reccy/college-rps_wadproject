@@ -37,20 +37,12 @@ $( document ).ajaxComplete(function() {
 
 // Responsive code
 $(window).resize(function() {
-    if ($(window).width() < 720) {
-        $('#usernameText').removeClass("navbar-left");
-        $('#stats').removeClass("navbar-right");
-        if($("#usernameText").css("display") != "none"){
-            $('#usernameText').css('display','block');
-            $('#stats').css('display','block');
-        }
+    if ($(window).width() < 736) {
+        $("#usernameText").removeClass("navbar-left");
+        $("#stats").removeClass("navbar-right");
     } else {
         $('#usernameText').addClass("navbar-left");
         $('#stats').addClass("navbar-right");
-        if($("#usernameText").css("display") != "none"){
-            $('#usernameText').css('display','inline-block');
-            $('#stats').css('display','inline-block');
-        }
     }
 });
 
@@ -105,8 +97,8 @@ function logoutBtnClicked(){
     $("#playBtn").hide();
     $("#loginBtn").show();
     $("#registerBtn").show();
-    $("#usernameText").hide();
-    $("#stats").hide();
+    $("#usernameText").css("display","none");
+    $("#stats").css("display","none");
 }
 
 //Send register form to server
@@ -186,8 +178,8 @@ function loginSend(){
                     $("#logoutBtn").show();
                     $("#playBtn").show();
                     
-                    $("#usernameText").show();
-                    $("#stats").show();
+                    $("#usernameText").css("display","inline-block");
+                    $("#stats").css("display","inline-block");
                 }
             });
             
