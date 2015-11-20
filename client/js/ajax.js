@@ -37,7 +37,7 @@ $( document ).ajaxComplete(function() {
 
 // Responsive code
 $(window).resize(function() {
-    if ($(window).width() < 736) {
+    if ($(window).width() < 746) {
         $("#usernameText").removeClass("navbar-left");
         $("#stats").removeClass("navbar-right");
     } else {
