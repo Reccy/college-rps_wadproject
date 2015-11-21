@@ -39,7 +39,7 @@
       
       <!-- Body -->
       <div id="loading"></div>
-      <div id="about-us" class="modal fade" role="dialog">
+      <div id="about-us" class="modal" role="dialog">
         <div class="modal-dialog">
           <!-- Modal content-->
           <div class="modal-content">
@@ -60,7 +60,7 @@
       </div>
       
       <!-- Footer -->
-      <button id="help-icon" data-toggle="modal" data-target="#about-us"><img id="help-icon-img" src="client/img/helpicon.png"></img></button>
+      <button id="help-icon" data-toggle="modal" data-target="#about-us" data-backdrop="static"><img id="help-icon-img" src="client/img/helpicon.png"></img></button>
       
       <!-- Scripts -->
       <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
