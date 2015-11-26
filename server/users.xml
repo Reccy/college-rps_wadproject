@@ -39,4 +39,28 @@
       <ratio>0</ratio>
     </score>
   </user>
+  <user>
+    <details>
+      <username>Mark</username>
+      <password>$2y$10$hwBaNtOPce.LzjcOs6FAxeuZvMZlAZhWPDCG6.9/e/gt/tePV9gJS</password>
+    </details>
+    <score>
+      <wins>0</wins>
+      <losses>0</losses>
+      <streaks>0</streaks>
+      <ratio>0</ratio>
+    </score>
+  </user>
+  <user>
+    <details>
+      <username>sand</username>
+      <password>$2y$10$n5VEkhHX1Cmbx/crxe0K8euguaoVU3IvVtD6LCnaJQSbol3EZ4efm</password>
+    </details>
+    <score>
+      <wins>0</wins>
+      <losses>0</losses>
+      <streaks>0</streaks>
+      <ratio>0</ratio>
+    </score>
+  </user>
 </users>

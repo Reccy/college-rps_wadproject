@@ -439,3 +439,26 @@ body{
 @media screen and (min-width: 1367px){
 
 }
+
+/* Leaderboard styling */
+#mostWins{
+    width:33%;
+    float:left;
+    color:white;
+    background-color:#9b59b6;
+    text-align:center;
+}
+#bestWinLoss{
+     width:33%;
+     float:left;
+     color:white;
+     background-color:#9b59b6;
+     text-align:center;
+}
+#longestStreak{
+     width:33%;
+     float:left;
+     color:white;
+     background-color:#9b59b6;
+     text-align:center;
+}

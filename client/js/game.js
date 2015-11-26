@@ -1,4 +1,3 @@
-var userChoice = prompt("Do you choose rock, paper or scissors?");
 var computerChoice = Math.random();
 if (computerChoice < 0.34) {
 	computerChoice = "rock";
@@ -15,29 +14,29 @@ var compare = function(choice1, choice2){
     
     else if(choice1 == "Rock"){
         if(choice2 == "Scissors"){
-            return "Rock Wins";
+            console.log ("Rock Wins");
         }
         else{
-            return "Paper Wins";
+           console.log ("Scissors Wins");
         }
     }
     
-    else if(choice1 == "Paper" || choice){
+    else if(choice1 == "Paper"){
         if(choice2 == "Rock"){
-            return "Paper Wins";
+           console.log ("Paper Wins");
         }
         else{
-            return "Rock Wins";
+           console.log ("Rock Wins");
         }
     }
     
      else if(choice1 == "Scissors"){
         if(choice2 == "Rock"){
-            return "Rock Wins";
+            console.log ("Rock Wins");
         }
         else{
             if(choice2 == "Paper")
-            return "Scissors Wins";
+            console.log ("Scissors Wins");
         }
     }
 }
