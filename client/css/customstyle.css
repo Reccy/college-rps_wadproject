@@ -441,24 +441,10 @@ body{
 }
 
 /* Leaderboard styling */
-#mostWins{
-    width:33%;
-    float:left;
+.col-sm-4{
     color:white;
     background-color:#9b59b6;
     text-align:center;
+    border:5px solid rgb(46, 204, 113);
 }
-#bestWinLoss{
-     width:33%;
-     float:left;
-     color:white;
-     background-color:#9b59b6;
-     text-align:center;
-}
-#longestStreak{
-     width:33%;
-     float:left;
-     color:white;
-     background-color:#9b59b6;
-     text-align:center;
-}
+
