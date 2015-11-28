@@ -69,5 +69,7 @@
       <script src="client/js/ajax.js"></script>
       <!-- Include all compiled plugins (below), or include individual files as needed -->
       <script src="client/js/bootstrap.min.js"></script>
+      <!-- Script for the game -->
+      <script src="client/js/game.js"></script>
     </body>
 </html>

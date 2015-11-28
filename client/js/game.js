@@ -6,37 +6,74 @@ if (computerChoice < 0.34) {
 } else {
 	computerChoice = "scissors";
 } console.log("Computer: " + computerChoice);
+ 
 
-var compare = function(choice1, choice2){
-    if(choice1 == choice2){
-        return "The result is a tie!";
+var compare = function(userChoice, computerChoice){
+    if(userChoice == computerChoice){
+       // return "The result is a tie!";
+       $("#buttonRow").hide();
+       $("#resultText").text("You won!");
+       
     }
     
-    else if(choice1 == "Rock"){
-        if(choice2 == "Scissors"){
-            console.log ("Rock Wins");
+    else if(userChoice == "Rock"){
+        if(computerChoice == "Scissors"){
+          //  console.log ("Rock Wins");
+          $("#buttonRow").hide();
+           $("#resultText").text("Rock Wins");
         }
         else{
-           console.log ("Scissors Wins");
-        }
-    }
-    
-    else if(choice1 == "Paper"){
-        if(choice2 == "Rock"){
-           console.log ("Paper Wins");
-        }
-        else{
-           console.log ("Rock Wins");
+           //console.log ("Scissors Wins");
+           $("#buttonRow").hide();
+           $("#resultText").text("Scissors Wins");
         }
     }
     
-     else if(choice1 == "Scissors"){
-        if(choice2 == "Rock"){
-            console.log ("Rock Wins");
+    else if(userChoice == "Paper"){
+        if(computerChoice == "Rock"){
+           //console.log ("Paper Wins");
+           $("#buttonRow").hide();
+            $("#resultText").text("Paper Wins");
         }
         else{
-            if(choice2 == "Paper")
-            console.log ("Scissors Wins");
+          // console.log ("Rock Wins");
+          $("#buttonRow").hide();
+           $("#resultText").text("Rock Wins");
         }
     }
+    
+     else if(userChoice == "Scissors"){
+        if(computerChoice == "Rock"){
+         //   console.log ("Rock Wins");
+         $("#buttonRow").hide();
+          $("#resultText").text("Rock Wins");
+        }
+        else{
+            if(computerChoice == "Paper")
+         //   console.log ("Scissors Wins");
+         $("#buttonRow").hide();
+          $("#resultText").text("Scissors Wins");
+        }
+    }
+    
 }
+
+
+function calculate(){}{
+ var Compcount, Usercount;
+      function add() {
+        if(computerChoice == "#resultText"){
+        return Compcount += 1;
+     }
+     else{
+         return Usercount += 1;
+     }
+        
+      }
+}
+
+
+       
+
+
+

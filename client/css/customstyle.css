@@ -432,19 +432,35 @@ body{
     }
 }
 
-@media screen and (min-width: 768px) and (max-width: 1366px){
-
-}
-
-@media screen and (min-width: 1367px){
-
-}
-
 /* Leaderboard styling */
-.col-sm-4{
-    color:white;
-    background-color:#9b59b6;
-    text-align:center;
-    border:5px solid rgb(46, 204, 113);
+.leaderboardPanel{
+    color:white !important;
+    background-color:#9b59b6 !important;
+    text-align:center !important;
+    border:5px solid rgb(46, 204, 113) !important;
 }
 
+/* Button row on game */
+#buttonRow{
+    max-width:1024px;
+}
+
+#buttonRow>button{
+    background-color:transparent;
+    border:0;
+}
+#buttonRow>button>img{
+    width:200px;
+    height:200px;
+}
+
+
+@media screen and (max-width: 768px){
+    #buttonRow>button{
+        margin-bottom:15px;
+    }
+    #buttonRow>button>img{
+        width:150px;
+        height:150px;
+    }
+}

@@ -1,18 +1,16 @@
-<script src="/client/js/game.js"></script>
-<script>
-     
-     var userChoice = prompt("Do you choose rock, paper or scissors?");
+<p id="intro-text">Welcome To Rock Paper Scissors</p>
+<p id="intro-subtext"></br></br></p>
 
-
-        //document.write(compare(userChoice, computerChoice));
-      
-      
-     
- </script>
- 
- 
-<div class="row"> 
-    <img src = "/client/img/rock.png" style="height:200px" class="col-lg-4">
-    <img src = "/client/img/scissors.png" style="height:200px" class="col-lg-4">
-    <img src = "/client/img/paper.png" style="height:200px" class="col-lg-4">
+<div id="buttonRow" class="center-block"> 
+    <button onclick="rockClicked();" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <img src = "/client/img/rock.png" class="img-responsive center-block" />
+    </button>
+    <button onclick="paperClicked();" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <img src = "/client/img/paper.png" class="img-responsive center-block">
+    </button>
+    <button onclick="scissorsClicked();" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+         <img src = "/client/img/scissors.png" class="img-responsive center-block"/>
+    </button>
 </div>
+
+<p id="resultText"></p>
