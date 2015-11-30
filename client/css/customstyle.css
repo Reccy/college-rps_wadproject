@@ -462,3 +462,8 @@ body{
         height:150px;
     }
 }
+
+/* Reset Button */
+#resetBtn{
+    display:none;
+}
