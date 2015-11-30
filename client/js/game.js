@@ -1,15 +1,18 @@
 var computerChoice = Math.random();// make computer's choice random
 if (computerChoice < 0.34) {
-    computerChoice = "rock";//If choice is below 0.34, choose Rock
+    computerChoice = "Rock";//If choice is below 0.34, choose Rock
 } else if (computerChoice <= 0.67) {
-    computerChoice = "paper";//If choice is below or equal to 0.67, choose Paper
+    computerChoice = "Paper";//If choice is below or equal to 0.67, choose Paper
 } else {
-    computerChoice = "scissors";//Else choose Scissors
+    computerChoice = "Scissors";//Else choose Scissors
 }
 //console.log("Computer: " + computerChoice);
  
  
 var compare = function(userChoice, computerChoice) {//Declare user and computer choices as variables
+    console.log("USER CHOICE: " + userChoice);
+    console.log("COMP CHOICE: " + computerChoice);
+
     var CompCount = 0;//Set counts to 0
     var UserCount = 0;
     var DrawCount = 0;
@@ -76,4 +79,18 @@ function calculate() {} {
  
     }
 }
+
+function rockClicked(){
+    compare("Rock",computerChoice);
+}
+
+function paperClicked(){
+    compare("Paper",computerChoice);
+}
+
+function scissorsClicked(){
+    compare("Scissors",computerChoice);
+}
+
+
 
