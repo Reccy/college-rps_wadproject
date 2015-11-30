@@ -432,11 +432,9 @@ body{
     }
 }
 
-/* Leaderboard styling */
 .leaderboardPanel{
     color:white !important;
     background-color:#9b59b6 !important;
-    text-align:center !important;
     border:5px solid rgb(46, 204, 113) !important;
 }
 

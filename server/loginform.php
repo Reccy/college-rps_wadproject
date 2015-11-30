@@ -5,6 +5,12 @@
     $username = trim($username);
     $password = trim($password); //Trim details for sanitization
     
+    //TEST CODE - REMOVE BEFORE FINAL RELEASE
+    if($username == ""){
+        echo "test_login";
+        exit();
+    }
+    
     if (preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $username)) //Special character check
     {
         echo"error_special_chars";

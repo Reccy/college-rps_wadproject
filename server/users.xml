@@ -28,19 +28,6 @@
   </user>
   <user>
     <details>
-      <username>Test2</username>
-      <password>$2y$10$PzpWjwTfNuWBLzMlZ2Fl3eAhLFjfWzzSO7V30yHtg5fo.IpfF7H9G</password>
-      <!-- testPass1 -->
-    </details>
-    <score>
-      <wins>0</wins>
-      <losses>0</losses>
-      <streaks>0</streaks>
-      <ratio>0</ratio>
-    </score>
-  </user>
-  <user>
-    <details>
       <username>Mark</username>
       <password>$2y$10$hwBaNtOPce.LzjcOs6FAxeuZvMZlAZhWPDCG6.9/e/gt/tePV9gJS</password>
     </details>
