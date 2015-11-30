@@ -1,10 +1,10 @@
 //Global variables
-var _username;
-var _wins;
-var _losses;
-var _streak;
-var _ratio;
-var _totalGames;
+    var _username;
+    var _wins;
+    var _losses;
+    var _streak;
+    var _ratio;
+    var _totalGames;
 
 // When jQuery is ready, hide the loading screen
 $(document).ready(function(){

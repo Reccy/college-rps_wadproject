@@ -79,22 +79,6 @@ var compare = function(userChoice, computerChoice) {//Declare user and computer 
          
     
 }
-      
-
-function calculate() {} {
-    var Compcount, Usercount, DrawCount;
- 
-    function add() {
-        if (computerChoice == "#intro-text") {
-            return Compcount;//If computer wins, show count
-        } else if (computerChoice == "#intro-text") {
-            return Usercount;//If user wins, show count
-        } else {
-            return DrawCount;//If it's a tie, print draw
-        }
- 
-    }
-}
 
 function rockClicked(){
     compChoice();
@@ -111,6 +95,17 @@ function scissorsClicked(){
     compare("Scissors",computerChoice);
 }
 
+var updateScore = function(change){
+    var data = {"Username":window._username,"Function":change};
+    
+    $.post("../../server/updatescore.php",data,function(returnData){
+        if(returnData == "user_updated"){
+            alert("USER UPDATED!");
+        } else {
+            alert("I AM ERROR!");
+        }
+    });
+}
 
 function resetClicked(){
     $("#buttonRow").show();//Show options

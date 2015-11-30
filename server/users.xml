@@ -20,10 +20,10 @@
       <!-- testPw -->
     </details>
     <score>
-      <wins>0</wins>
-      <losses>0</losses>
+      <wins>5</wins>
+      <losses>2</losses>
       <streaks>0</streaks>
-      <ratio>0</ratio>
+      <ratio>2.5</ratio>
     </score>
   </user>
   <user>
