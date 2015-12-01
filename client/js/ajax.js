@@ -1,11 +1,12 @@
 //Global variables
-    var _username;
-    var _wins;
-    var _losses;
-    var _streak;
-    var _ratio;
-    var _totalGames;
-
+    var _username = "Test";
+    var _wins = 0;
+    var _losses = 0;
+    var _streak = 0;
+    var _ratio = 0;
+    var _totalGames = 0;
+    var _ajaxRunning = false;
+    
 // When jQuery is ready, hide the loading screen
 $(document).ready(function(){
     console.log("JQuery is ready!");
@@ -22,8 +23,13 @@ $.ajaxSetup({
 
 // When starting an AJAX request, show the loading screen
 $(document).ajaxStart(function(){
-  $("#loading").show();
+    $("#loading").show();
+    window._ajaxRunning = true;
 });
+
+$(document).ajaxStop(function(){
+    window._ajaxRunning = false;
+})
 
 // When something goes wrong with AJAX, display an error.
 $( document ).ajaxError(function() {
@@ -33,6 +39,7 @@ $( document ).ajaxError(function() {
 // When an AJAX request is complete, hide the loading screen
 $( document ).ajaxComplete(function() {
   $("#loading").hide();
+  window._ajaxRunning = false;
 });
 
 // Responsive code
@@ -161,18 +168,18 @@ function loginSend(){
                 } else {
                     var userJSON = JSON.parse(userData);
                     
-                    _username = userJSON.username;
-                    _wins = userJSON.wins;
-                    _losses = userJSON.losses;
-                    _streak = userJSON.streak;
-                    _ratio = userJSON.ratio;
+                    window._username = userJSON.username;
+                    window._wins = userJSON.wins;
+                    window._losses = userJSON.losses;
+                    window._streak = userJSON.streak;
+                    window._ratio = userJSON.ratio;
                     
-                    _totalGames = parseInt(_wins) + parseInt(_losses);
+                    window._totalGames = parseInt(window._wins) + parseInt(window._losses);
                     
-                    $(".usernameReplace").html(_username);
-                    $(".winsReplace").html(_wins);
-                    $(".lossesReplace").html(_losses);
-                    $(".gamesReplace").html(_totalGames);
+                    $(".usernameReplace").html(window._username);
+                    $(".winsReplace").html(window._wins);
+                    $(".lossesReplace").html(window._losses);
+                    $(".gamesReplace").html(window._totalGames);
                     
                     $("#leaderboardsBtn").show();
                     $("#logoutBtn").show();
@@ -201,18 +208,18 @@ function loginSend(){
                 } else {
                     var userJSON = JSON.parse(userData);
                     
-                    _username = userJSON.username;
-                    _wins = userJSON.wins;
-                    _losses = userJSON.losses;
-                    _streak = userJSON.streak;
-                    _ratio = userJSON.ratio;
+                    window._username = userJSON.username;
+                    window._wins = userJSON.wins;
+                    window._losses = userJSON.losses;
+                    window._streak = userJSON.streak;
+                    window._ratio = userJSON.ratio;
                     
-                    _totalGames = parseInt(_wins) + parseInt(_losses);
+                    window._totalGames = parseInt(window._wins) + parseInt(window._losses);
                     
-                    $(".usernameReplace").html(_username);
-                    $(".winsReplace").html(_wins);
-                    $(".lossesReplace").html(_losses);
-                    $(".gamesReplace").html(_totalGames);
+                    $(".usernameReplace").html(window._username);
+                    $(".winsReplace").html(window._wins);
+                    $(".lossesReplace").html(window._losses);
+                    $(".gamesReplace").html(window._totalGames);
                     
                     $("#leaderboardsBtn").show();
                     $("#logoutBtn").show();
@@ -227,6 +234,37 @@ function loginSend(){
             loginError("Username/Password Incorrect!");
         } else if(returnData == "error_unknown"){ // If something goes terribly wrong, alert the user
             displayError();
+        }
+    });
+}
+
+// Updates the score
+// Can use: "wins", "losses", "streak"
+var updateScore = function(scoreField){
+    var data = {"Username":window._username,"Field":scoreField};
+    
+    $.post("../../server/updatescore.php",data,function(returnData){
+        if(returnData == "error_unknown"){
+            displayError(); //If an error occurs, stop application. Otherwise continue
+        }
+    });
+}
+
+// Returns the scores
+var getScore = function(){
+    $.post("../../server/userdata.php",{"Username":window._username},function(userData){ //POST to get the other details from the user
+        if(userData == "error_unknown"){
+            displayError();
+        } else {
+            var userJSON = JSON.parse(userData);
+            
+            window._username = userJSON.username;
+            window._wins = userJSON.wins;
+            window._losses = userJSON.losses;
+            window._streak = userJSON.streak;
+            window._ratio = userJSON.ratio;
+            
+            window._totalGames = parseInt(window._wins) + parseInt(window._losses);
         }
     });
 }

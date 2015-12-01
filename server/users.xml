@@ -7,10 +7,10 @@
       <!-- verifyMe -->
     </details>
     <score>
-      <wins>12</wins>
-      <losses>5</losses>
+      <wins>18</wins>
+      <losses>7</losses>
       <streaks>4</streaks>
-      <ratio>2.4</ratio>
+      <ratio>2.5714285714286</ratio>
     </score>
   </user>
   <user>
@@ -20,10 +20,10 @@
       <!-- testPw -->
     </details>
     <score>
-      <wins>5</wins>
-      <losses>2</losses>
+      <wins>173</wins>
+      <losses>166</losses>
       <streaks>0</streaks>
-      <ratio>2.5</ratio>
+      <ratio>1.0421686746988</ratio>
     </score>
   </user>
   <user>

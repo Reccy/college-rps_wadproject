@@ -15,16 +15,13 @@ function compChoice(){
  
  
 var compare = function(userChoice, computerChoice) {//Declare user and computer choices as variables
-    var CompCount = 0;//Set counts to 0
-    var UserCount = 0;
-    var DrawCount = 0;
     if (userChoice == computerChoice) {
         //If user and computer choose the same, it's a draw
         $("#buttonRow").hide();//Hide images
         $("#intro-text").text("You've drawn with the computer!");//Print draw
         $("#intro-subtext").html("<br/><br/>");//Clear text
         $("#resetBtn").show();
-        DrawCount += 1;//Increment the count
+       
     }//End If
   
   else if(userChoice == "Rock"){
@@ -32,15 +29,23 @@ var compare = function(userChoice, computerChoice) {//Declare user and computer 
           $("#buttonRow").hide();//Hide images
           $("#intro-text").text("Hard Luck, the Computer Wins");//Print win message
           $("#intro-subtext").text("You chose Rock!\nThe computer chose Paper!");//Print win message
+          
+          $(".lossesReplace").text(parseInt(window._losses) + 1);
+          $(".gamesReplace").text(parseInt(window._wins) + parseInt(window._losses) + 1);
           $("#resetBtn").show();
-          CompCount += 1;//Increment the count
+          window.updateScore("losses");
+          window._losses = parseInt(window._losses) + 1;
       }
       else if(computerChoice == "Scissors"){
           $("#buttonRow").hide();//Hide images
           $("#intro-text").text("Congratulations, You've Won!");//Print win message
           $("#intro-subtext").text("You chose Rock!\nThe computer chose Scissors!");//Print win message
+          
+          $(".winsReplace").text(parseInt(window._wins) + 1);
+          $(".gamesReplace").text(parseInt(window._wins) + parseInt(window._losses) + 1);
           $("#resetBtn").show();
-          UserCount += 1;//Increment the count
+          window.updateScore("wins");
+          window._wins = parseInt(window._wins) + 1;
       }
   }
   else if(userChoice == "Paper"){
@@ -48,36 +53,49 @@ var compare = function(userChoice, computerChoice) {//Declare user and computer 
           $("#buttonRow").hide();//Hide images
           $("#intro-text").text("Congratulations, You've Won!");//Print win message
           $("#intro-subtext").text("You chose Paper!\nThe computer chose Rock!");//Print win message
+          
+          $(".winsReplace").text(parseInt(window._wins) + 1);
+          $(".gamesReplace").text(parseInt(window._wins) + parseInt(window._losses) + 1);
           $("#resetBtn").show();
-          UserCount += 1;//Increment the count
+          window.updateScore("wins");
+          window._wins = parseInt(window._wins) + 1;
       }
       else if(computerChoice == "Scissors"){
           $("#buttonRow").hide();//Hide images
           $("#intro-text").text("Hard Luck, the Computer Wins");//Print win message
           $("#intro-subtext").text("You chose Paper!\nThe computer chose Scissors!");//Print win message
+          
+          $(".lossesReplace").text(parseInt(window._losses) + 1);
+          $(".gamesReplace").text(parseInt(window._wins) + parseInt(window._losses) + 1);
           $("#resetBtn").show();
-          CompCount += 1;//Increment the count
+          window.updateScore("losses");
+          window._losses = parseInt(window._losses) + 1;
       }
-      
   }
   else if(userChoice == "Scissors"){
       if(computerChoice == "Rock"){
           $("#buttonRow").hide();//Hide images
           $("#intro-text").text("Hard Luck, the Computer Wins");//Print win message
           $("#intro-subtext").text("You chose Scissors!\nThe computer chose Rock!");//Print win message
+          
+          $(".lossesReplace").text(parseInt(window._losses) + 1);
+          $(".gamesReplace").text(parseInt(window._wins) + parseInt(window._losses) + 1);
           $("#resetBtn").show();
-          CompCount += 1;//Increment the count
+          window.updateScore("losses");
+          window._losses = parseInt(window._losses) + 1;
       }
       else if(computerChoice == "Paper"){
           $("#buttonRow").hide();//Hide images
           $("#intro-text").text("Congratulations, You've Won!");//Print win message
           $("#intro-subtext").text("You chose Scissors!\nThe computer chose Paper!");//Print win message
+          
+          $(".winsReplace").text(parseInt(window._wins) + 1);
+          $(".gamesReplace").text(parseInt(window._wins) + parseInt(window._losses) + 1);
           $("#resetBtn").show();
-          UserCount += 1;//Increment the count
+          window.updateScore("wins");
+          window._wins = parseInt(window._wins) + 1;
       }
   }
-         
-    
 }
 
 function rockClicked(){
@@ -93,18 +111,6 @@ function paperClicked(){
 function scissorsClicked(){
     compChoice();
     compare("Scissors",computerChoice);
-}
-
-var updateScore = function(change){
-    var data = {"Username":window._username,"Function":change};
-    
-    $.post("../../server/updatescore.php",data,function(returnData){
-        if(returnData == "user_updated"){
-            alert("USER UPDATED!");
-        } else {
-            alert("I AM ERROR!");
-        }
-    });
 }
 
 function resetClicked(){

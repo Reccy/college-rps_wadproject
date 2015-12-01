@@ -1,10 +1,10 @@
 <?php
     //Get values required to perform function
     $username = $_POST["Username"];
-    $function = $_POST["Function"];
+    $field = $_POST["Field"];
     
     //If any values are null, return an error, otherwise continue.
-    if($username == null ||$function == null){
+    if($username == null ||$field == null){
         echo "error_unknown";
         exit();
     }
@@ -16,16 +16,20 @@
         
         for($i = 0; $i < $sxe->count(); $i++){
             if($sxe->user[$i]->details->username == $username){
-                if($function == "wins"){ // Increase wins
+                if($field == "wins"){ // Increase wins
                     $sxe->user[$i]->score->wins = $sxe->user[$i]->score->wins + 1;
-                    $sxe->user[$i]->score->ratio = $sxe->user[$i]->score->wins / $sxe->user[$i]->score->losses; //Calculate win/loss ratio
-                } else if($function == "losses"){ // Increase losses
+                    if($sxe->user[$i]->score->wins != 0 && $sxe->user[$i]->score->losses != 0){
+                        $sxe->user[$i]->score->ratio = $sxe->user[$i]->score->wins / $sxe->user[$i]->score->losses; //Calculate win/loss ratio
+                    }
+                } else if($field == "losses"){ // Increase losses
                     $sxe->user[$i]->score->losses = $sxe->user[$i]->score->losses + 1;
-                    $sxe->user[$i]->score->ratio = $sxe->user[$i]->score->wins / $sxe->user[$i]->score->losses; //Calculate win/loss ratio
-                } else if($function == "streaks"){ // Increase streaks
+                    if($sxe->user[$i]->score->wins != 0 && $sxe->user[$i]->score->losses != 0){
+                        $sxe->user[$i]->score->ratio = $sxe->user[$i]->score->wins / $sxe->user[$i]->score->losses; //Calculate win/loss ratio
+                    }
+                } else if($field == "streaks"){ // Increase streaks
                     $sxe->user[$i]->score->streaks = $sxe->user[$i]->score->streaks + 1;
                 } else {
-                    echo "error_unknown";
+                    echo "error_unknown"; //Return error
                     exit();
                 }
             }
