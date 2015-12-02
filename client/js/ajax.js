@@ -162,10 +162,9 @@ function loginSend(){
     var data = {"Username":user,"Password":pass};
     
     $.post("../../server/loginform.php",data,function(returnData){
-        console.log("R1:" + returnData);
         if(returnData == "test_login"){ // If the password matches, login the user
             $("#body").load("client/html/welcome.html", function(){
-                $("body").css("background-color","#2ecc71");
+                $("body").css("background-color","#3498db");
                 $("#loginBtn").css("display","none");
                 $("#registerBtn").css("display","none");
                 $("#leaderboardsBtn").show();
@@ -173,7 +172,6 @@ function loginSend(){
                 $("#logoutBtn").show();
                 
                 $.post("../../server/userdata.php",{"Username":"Test"},function(userData){ //POST to get the other details from the user
-                    console.log("R2:" + userData)
                     if(userData == "error_unknown"){
                         displayError();
                     } else {
@@ -213,7 +211,6 @@ function loginSend(){
             $("#logoutBtn").show();
             
             $.post("../../server/userdata.php",{"Username":user},function(userData){ //POST to get the other details from the user
-                console.log("R2:" + userData)
                 if(userData == "error_unknown"){
                     displayError();
                 } else {
