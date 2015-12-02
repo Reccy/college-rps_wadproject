@@ -22,3 +22,30 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    $("#userName").keyup(function(event){
+        if(event.keyCode == 13){
+            window.loginSend();
+        }
+    });
+    $("#userPassword").keyup(function(event){
+        if(event.keyCode == 13){
+            window.loginSend();
+        }
+    });
+    $("#userPasswordConfirm").keyup(function(event){
+        if(event.keyCode == 13){
+            window.loginSend();
+        }
+    });
+    $("#userChecked").keyup(function(event){
+        if(event.keyCode == 13){
+            if($("#userChecked>input").prop("checked")){
+                $("#userChecked>input").prop("checked",false);
+            } else {
+                $("#userChecked>input").prop("checked",true);
+            }
+        }
+    });
+</script>

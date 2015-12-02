@@ -19,3 +19,17 @@
         </div>
     </div>
 </div>
+
+<!-- Script adds event listeners to buttons so you can press "ENTER" to login -->
+<script type="text/javascript">
+    $("#userName").keyup(function(event){
+        if(event.keyCode == 13){
+            window.loginSend();
+        }
+    });
+    $("#userPassword").keyup(function(event){
+        if(event.keyCode == 13){
+            window.loginSend();
+        }
+    });
+</script>

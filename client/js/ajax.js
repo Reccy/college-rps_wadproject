@@ -138,6 +138,7 @@ function registerSend(){
             registerError("A user already exists with this username!");
         } else if(returnData == "user_added"){ //If the user is succesfully added, alert the user.
             registerError("You have successfully registered!");
+            loginSend(); //Automatically login
         } else if(returnData == "error_special_chars"){ // If the user types in an illegal character, alert them.
             registerError("Please only type in alphanumeric characters. E.g. a-z 0-9");
         } else if(returnData == "error_unchecked_box"){ // If the user doesn't accept the password condition, alert them.
