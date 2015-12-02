@@ -5,6 +5,7 @@
     var _streak = 0;
     var _ratio = 0;
     var _totalGames = 0;
+    var _leaderboardJSON;
     var _ajaxRunning = false;
     
 // When jQuery is ready, hide the loading screen
@@ -274,5 +275,34 @@ var getScore = function(){
             
             window._totalGames = parseInt(window._wins) + parseInt(window._losses);
         }
+    });
+}
+
+// Returns the scores
+var getLeaderboard = function(){
+    $.post("../../server/getleaderboard.php",function(returnData){ //POST to get the JSON of the users
+        if(returnData == "error_unknown"){
+            displayError();
+        }
+    }).always(function(returnData){
+        window._leaderboardJSON = JSON.parse(returnData);
+        
+        //Leaderboard WINS test code
+        $("#leaderboardWins>div:eq(1)>div:eq(1)>p").text(window._leaderboardJSON[0].username);
+        $("#leaderboardWins>div:eq(1)>div:eq(2)>p").text(window._leaderboardJSON[0].wins);
+        $("#leaderboardWins>div:eq(2)>div:eq(1)>p").text(window._leaderboardJSON[1].username);
+        $("#leaderboardWins>div:eq(2)>div:eq(2)>p").text(window._leaderboardJSON[1].wins);
+        
+        //Leaderboard RATIO test code
+        $("#leaderboardRatio>div:eq(1)>div:eq(1)>p").text(window._leaderboardJSON[0].username);
+        $("#leaderboardRatio>div:eq(1)>div:eq(2)>p").text(window._leaderboardJSON[0].ratio);
+        $("#leaderboardRatio>div:eq(2)>div:eq(1)>p").text(window._leaderboardJSON[1].username);
+        $("#leaderboardRatio>div:eq(2)>div:eq(2)>p").text(window._leaderboardJSON[1].ratio);
+        
+        //Leaderboard STREAK test code
+        $("#leaderboardStreak>div:eq(1)>div:eq(1)>p").text(window._leaderboardJSON[0].username);
+        $("#leaderboardStreak>div:eq(1)>div:eq(2)>p").text(window._leaderboardJSON[0].streaks);
+        $("#leaderboardStreak>div:eq(2)>div:eq(1)>p").text(window._leaderboardJSON[1].username);
+        $("#leaderboardStreak>div:eq(2)>div:eq(2)>p").text(window._leaderboardJSON[1].streaks);
     });
 }

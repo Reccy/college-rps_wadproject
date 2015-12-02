@@ -20,8 +20,8 @@
       <!-- testPw -->
     </details>
     <score>
-      <wins>12</wins>
-      <losses>12</losses>
+      <wins>17</wins>
+      <losses>17</losses>
       <streaks>0</streaks>
       <ratio>1</ratio>
     </score>
@@ -44,10 +44,10 @@
       <password>$2y$10$n5VEkhHX1Cmbx/crxe0K8euguaoVU3IvVtD6LCnaJQSbol3EZ4efm</password>
     </details>
     <score>
-      <wins>0</wins>
-      <losses>0</losses>
+      <wins>8</wins>
+      <losses>3</losses>
       <streaks>0</streaks>
-      <ratio>0</ratio>
+      <ratio>2.6666666666667</ratio>
     </score>
   </user>
 </users>

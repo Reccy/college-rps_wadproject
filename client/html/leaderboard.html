@@ -345,15 +345,6 @@
     </div>
 </div>
 
-<!-- example script for jQuery selection on tables -->
 <script type="text/javascript">
-    //$("#leaderboardName") - Selects the leaderboard
-    //>diveq(num) - Selects the row from 1 to 10
-    //>div:eq(num) - Selects the rank, name and score through 0, 1 and 2
-    //>p selects the P tag
-    //.text("diff") - Allows you to change the text
-    $("#leaderboardWins>div:eq(1)>div:eq(1)>p").text("Reccy");
-    $("#leaderboardWins>div:eq(1)>div:eq(2)>p").text("12");
-    $("#leaderboardWins>div:eq(2)>div:eq(1)>p").text("Test");
-    $("#leaderboardWins>div:eq(2)>div:eq(2)>p").text("10");
+    window.getLeaderboard();
 </script>

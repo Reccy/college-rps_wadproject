@@ -115,7 +115,7 @@ function scissorsClicked(){
 
 function resetClicked(){
     $("#buttonRow").show();//Show options
-    $("#intro-text").text("Welcome to Rock Paper Scissors");//Reset the text
+    $("#intro-text").text("Click a button to play!");//Reset the text
     $("#intro-subtext").html("<br/><br/>");//Clear text
     $("#resetBtn").hide();//Hide Button
 }
