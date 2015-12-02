@@ -1,5 +1,5 @@
 //Global variables
-    var _username = "Test";
+    var _username = "USERNAME_HERE";
     var _wins = 0;
     var _losses = 0;
     var _streak = 0;
@@ -88,11 +88,13 @@ function registerBtnClicked(){
 
 function playBtnClicked(){
     $("#body").load("client/html/game.html");
+    $("body").css("background-color","#2ecc71");
     
 }
 
 function leaderboardsBtnClicked(){
     $("#body").load("client/html/leaderboard.html");
+    $("body").css("background-color","#e67e22");
 }
 
 //When the logout button is clicked, load the original welcome screen
@@ -106,6 +108,12 @@ function logoutBtnClicked(){
     $("#registerBtn").show();
     $("#usernameText").css("display","none");
     $("#stats").css("display","none");
+    window._username = "USERNAME_HERE";
+    window._wins = 0;
+    window._losses = 0;
+    window._streak = 0;
+    window._ratio = 0;
+    window._totalGames = 0;
 }
 
 //Send register form to server
@@ -153,43 +161,43 @@ function loginSend(){
     $.post("../../server/loginform.php",data,function(returnData){
         console.log("R1:" + returnData);
         if(returnData == "test_login"){ // If the password matches, login the user
-            $("#body").load("client/html/welcome.html");
-            $("body").css("background-color","#2ecc71");
-            $("#loginBtn").css("display","none");
-            $("#registerBtn").css("display","none");
-            $("#leaderboardsBtn").show();
-            $("#playBtn").show();
-            $("#logoutBtn").show();
-            
-            $.post("../../server/userdata.php",{"Username":"Test"},function(userData){ //POST to get the other details from the user
-                console.log("R2:" + userData)
-                if(userData == "error_unknown"){
-                    displayError();
-                } else {
-                    var userJSON = JSON.parse(userData);
-                    
-                    window._username = userJSON.username;
-                    window._wins = userJSON.wins;
-                    window._losses = userJSON.losses;
-                    window._streak = userJSON.streak;
-                    window._ratio = userJSON.ratio;
-                    
-                    window._totalGames = parseInt(window._wins) + parseInt(window._losses);
-                    
-                    $(".usernameReplace").html(window._username);
-                    $(".winsReplace").html(window._wins);
-                    $(".lossesReplace").html(window._losses);
-                    $(".gamesReplace").html(window._totalGames);
-                    
-                    $("#leaderboardsBtn").show();
-                    $("#logoutBtn").show();
-                    $("#playBtn").show();
-                    
-                    $("#usernameText").css("display","inline-block");
-                    $("#stats").css("display","inline-block");
-                }
+            $("#body").load("client/html/welcome.html", function(){
+                $("body").css("background-color","#2ecc71");
+                $("#loginBtn").css("display","none");
+                $("#registerBtn").css("display","none");
+                $("#leaderboardsBtn").show();
+                $("#playBtn").show();
+                $("#logoutBtn").show();
+                
+                $.post("../../server/userdata.php",{"Username":"Test"},function(userData){ //POST to get the other details from the user
+                    console.log("R2:" + userData)
+                    if(userData == "error_unknown"){
+                        displayError();
+                    } else {
+                        var userJSON = JSON.parse(userData);
+                        
+                        window._username = userJSON.username;
+                        window._wins = userJSON.wins;
+                        window._losses = userJSON.losses;
+                        window._streak = userJSON.streak;
+                        window._ratio = userJSON.ratio;
+                        
+                        window._totalGames = parseInt(window._wins) + parseInt(window._losses);
+                        
+                        $(".usernameReplace").html(window._username);
+                        $(".winsReplace").html(window._wins);
+                        $(".lossesReplace").html(window._losses);
+                        $(".gamesReplace").html(window._totalGames);
+                        
+                        $("#leaderboardsBtn").show();
+                        $("#logoutBtn").show();
+                        $("#playBtn").show();
+                        
+                        $("#usernameText").css("display","inline-block");
+                        $("#stats").css("display","inline-block");
+                    }
+                }); 
             });
-            
         } else if(returnData == "error_special_chars"){ // If the user types in an illegal character, alert them.
             loginError("Please only type in alphanumeric characters. E.g. a-z 0-9");
         } else if(returnData == "password_match"){ // If the password matches, login the user
