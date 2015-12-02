@@ -7,6 +7,11 @@
     $username = trim($username);
     $password = trim($password); //Trim details for sanitization
     
+    if($username == "USERNAME_HERE"){
+        echo "error_special";
+        exit();
+    }
+    
     if(strlen($username) < 4){
         echo("error_username_length");
         exit();

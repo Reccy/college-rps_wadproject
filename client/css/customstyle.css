@@ -9,7 +9,7 @@ button:focus {outline:0;}
 
 /* Background color */
 body{
-    background-color:#95a5a6;
+    background-color:#3498db;
 }
 
 /* Title on top of webpage */
@@ -438,7 +438,7 @@ body{
     border:5px solid #e67e22 !important;
 }
 
-.leaderboardTitle{
+.leaderboardTitle, .leaderboardRecord{
     text-align:center;
 }
 

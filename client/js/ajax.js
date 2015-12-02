@@ -100,7 +100,7 @@ function leaderboardsBtnClicked(){
 //When the logout button is clicked, load the original welcome screen
 function logoutBtnClicked(){
     $("#body").load("client/html/landing.html");
-    $("body").css("background-color","#95A5A6");
+    $("body").css("background-color","#3498db");
     $("#logoutBtn").hide();
     $("#leaderboardsBtn").hide();
     $("#playBtn").hide();
@@ -137,7 +137,7 @@ function registerSend(){
         } else if(returnData == "user_exists"){ //If the username already exists, alert the user.
             registerError("A user already exists with this username!");
         } else if(returnData == "user_added"){ //If the user is succesfully added, alert the user.
-            registerError("You have successfully registered!");
+            registerError("You have successfully registered! Logging you in...");
             loginSend(); //Automatically login
         } else if(returnData == "error_special_chars"){ // If the user types in an illegal character, alert them.
             registerError("Please only type in alphanumeric characters. E.g. a-z 0-9");
@@ -149,6 +149,8 @@ function registerSend(){
             registerError("Your password must be at least 6 characters long");
         } else if(returnData =="error_unknown"){ // If something goes terribly wrong, alert the user
             displayError();
+        } else if(returnData =="error_special"){ // If the user inserts USERNAME_HERE, alert the user that this is a forbidden username
+            registerError("This is a forbidden username. Try another one.");
         }
     });
 }
