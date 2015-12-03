@@ -29,7 +29,7 @@ var compare = function(userChoice, computerChoice) {//Declare user and computer 
           $("#buttonRow").hide();//Hide images
           $("#intro-text").text("Hard Luck, the Computer Wins");//Print win message
           $("#intro-subtext").text("You chose Rock!\nThe computer chose Paper!");//Print win message
-           window._streak = 0;
+          window._streak = 0;
           
           $(".lossesReplace").text(parseInt(window._losses) + 1);
           $(".gamesReplace").text(parseInt(window._wins) + parseInt(window._losses) + 1);
@@ -42,7 +42,7 @@ var compare = function(userChoice, computerChoice) {//Declare user and computer 
           $("#buttonRow").hide();//Hide images
           $("#intro-text").text("Congratulations, You've Won!");//Print win message
           $("#intro-subtext").text("You chose Rock!\nThe computer chose Scissors!");//Print win message
-          window._streak += 1;
+          window._streak = parseInt(window._streak + 1);
           
           $(".winsReplace").text(parseInt(window._wins) + 1);
           $(".gamesReplace").text(parseInt(window._wins) + parseInt(window._losses) + 1);
@@ -57,7 +57,7 @@ var compare = function(userChoice, computerChoice) {//Declare user and computer 
           $("#buttonRow").hide();//Hide images
           $("#intro-text").text("Congratulations, You've Won!");//Print win message
           $("#intro-subtext").text("You chose Paper!\nThe computer chose Rock!");//Print win message
-           window._streak += 1;
+          window._streak = parseInt(window._streak + 1);
            
           $(".winsReplace").text(parseInt(window._wins) + 1);
           $(".gamesReplace").text(parseInt(window._wins) + parseInt(window._losses) + 1);
@@ -70,7 +70,7 @@ var compare = function(userChoice, computerChoice) {//Declare user and computer 
           $("#buttonRow").hide();//Hide images
           $("#intro-text").text("Hard Luck, the Computer Wins");//Print win message
           $("#intro-subtext").text("You chose Paper!\nThe computer chose Scissors!");//Print win message
-           window._streak = 0;
+          window._streak = 0;
           
           $(".lossesReplace").text(parseInt(window._losses) + 1);
           $(".gamesReplace").text(parseInt(window._wins) + parseInt(window._losses) + 1);
@@ -85,7 +85,7 @@ var compare = function(userChoice, computerChoice) {//Declare user and computer 
           $("#buttonRow").hide();//Hide images
           $("#intro-text").text("Hard Luck, the Computer Wins");//Print win message
           $("#intro-subtext").text("You chose Scissors!\nThe computer chose Rock!");//Print win message
-           window._streak = 0;
+          window._streak = 0;
           
           $(".lossesReplace").text(parseInt(window._losses) + 1);
           $(".gamesReplace").text(parseInt(window._wins) + parseInt(window._losses) + 1);
@@ -98,7 +98,7 @@ var compare = function(userChoice, computerChoice) {//Declare user and computer 
           $("#buttonRow").hide();//Hide images
           $("#intro-text").text("Congratulations, You've Won!");//Print win message
           $("#intro-subtext").text("You chose Scissors!\nThe computer chose Paper!");//Print win message
-            window._streak += 1;
+          window._streak = parseInt(window._streak + 1);
           
           $(".winsReplace").text(parseInt(window._wins) + 1);
           $(".gamesReplace").text(parseInt(window._wins) + parseInt(window._losses) + 1);

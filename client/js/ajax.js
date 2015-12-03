@@ -181,7 +181,7 @@ function loginSend(){
                         window._username = userJSON.username;
                         window._wins = userJSON.wins;
                         window._losses = userJSON.losses;
-                        window._streak = userJSON.streak;
+                        window._streak = userJSON.streaks;
                         window._ratio = userJSON.ratio;
                         
                         window._totalGames = parseInt(window._wins) + parseInt(window._losses);
@@ -220,7 +220,7 @@ function loginSend(){
                     window._username = userJSON.username;
                     window._wins = userJSON.wins;
                     window._losses = userJSON.losses;
-                    window._streak = userJSON.streak;
+                    window._streak = userJSON.streaks;
                     window._ratio = userJSON.ratio;
                     
                     window._totalGames = parseInt(window._wins) + parseInt(window._losses);
@@ -260,7 +260,13 @@ var updateScore = function(scoreField){
 }
 
 var updateStreak = function(value){
-    //Code goes here
+    $.post("../../server/updatestreak.php",{"Username":window._username,"Value":value},function(returnData){ //POST to update the streak
+        if(returnData == "error_unknown"){
+            displayError();
+        } else if(returnData == "user_updated"){
+            console.log("User updated!");
+        }
+    });
 }
 
 // Returns the scores
@@ -274,7 +280,7 @@ var getScore = function(){
             window._username = userJSON.username;
             window._wins = userJSON.wins;
             window._losses = userJSON.losses;
-            window._streak = userJSON.streak;
+            window._streak = userJSON.streaks;
             window._ratio = userJSON.ratio;
             
             window._totalGames = parseInt(window._wins) + parseInt(window._losses);
@@ -304,7 +310,6 @@ var getLeaderboard = function(){
         for(var i = maxVal; i >= 0; i--){
             for(var j = 0; j < window._leaderboardJSON.length; j++){
                 if(i == parseInt(window._leaderboardJSON[j].wins)){
-                    console.log(leaderboardIndex);
                     $("#leaderboardWins>div:eq("+leaderboardIndex+")>div:eq(1)>p").text(window._leaderboardJSON[j].username);
                     $("#leaderboardWins>div:eq("+leaderboardIndex+")>div:eq(2)>p").text(window._leaderboardJSON[j].wins);
                     leaderboardIndex += 1;
@@ -325,7 +330,6 @@ var getLeaderboard = function(){
         for(var i = maxVal; i >= 0; i--){
             for(var j = 0; j < window._leaderboardJSON.length; j++){
                 if(i == parseInt(window._leaderboardJSON[j].streaks)){
-                    console.log(leaderboardIndex);
                     $("#leaderboardStreak>div:eq("+leaderboardIndex+")>div:eq(1)>p").text(window._leaderboardJSON[j].username);
                     $("#leaderboardStreak>div:eq("+leaderboardIndex+")>div:eq(2)>p").text(window._leaderboardJSON[j].streaks);
                     leaderboardIndex += 1;
@@ -346,7 +350,6 @@ var getLeaderboard = function(){
         for(var i = maxVal; i >= 0; i--){
             for(var j = 0; j < window._leaderboardJSON.length; j++){
                 if(i == parseInt(window._leaderboardJSON[j].ratio)){
-                    console.log(leaderboardIndex);
                     $("#leaderboardRatio>div:eq("+leaderboardIndex+")>div:eq(1)>p").text(window._leaderboardJSON[j].username);
                     $("#leaderboardRatio>div:eq("+leaderboardIndex+")>div:eq(2)>p").text(window._leaderboardJSON[j].ratio);
                     leaderboardIndex += 1;
