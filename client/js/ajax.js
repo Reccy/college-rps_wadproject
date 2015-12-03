@@ -259,6 +259,10 @@ var updateScore = function(scoreField){
     });
 }
 
+var updateStreak = function(value){
+    //Code goes here
+}
+
 // Returns the scores
 var getScore = function(){
     $.post("../../server/userdata.php",{"Username":window._username},function(userData){ //POST to get the other details from the user
@@ -287,22 +291,26 @@ var getLeaderboard = function(){
     }).always(function(returnData){
         window._leaderboardJSON = JSON.parse(returnData);
         
-        //Leaderboard WINS test code
-        $("#leaderboardWins>div:eq(1)>div:eq(1)>p").text(window._leaderboardJSON[0].username);
-        $("#leaderboardWins>div:eq(1)>div:eq(2)>p").text(window._leaderboardJSON[0].wins);
-        $("#leaderboardWins>div:eq(2)>div:eq(1)>p").text(window._leaderboardJSON[1].username);
-        $("#leaderboardWins>div:eq(2)>div:eq(2)>p").text(window._leaderboardJSON[1].wins);
+        //Sort WINS
+        var maxVal = 0;
+        var leaderboardIndex = 1;
+        //Find the largest value
+        for(var i = 0; i < window._leaderboardJSON.length; i++){
+            if(maxVal < parseInt(window._leaderboardJSON[i].wins)){
+                maxVal = window._leaderboardJSON[i].wins;
+            }
+        }
         
-        //Leaderboard RATIO test code
-        $("#leaderboardRatio>div:eq(1)>div:eq(1)>p").text(window._leaderboardJSON[0].username);
-        $("#leaderboardRatio>div:eq(1)>div:eq(2)>p").text(window._leaderboardJSON[0].ratio);
-        $("#leaderboardRatio>div:eq(2)>div:eq(1)>p").text(window._leaderboardJSON[1].username);
-        $("#leaderboardRatio>div:eq(2)>div:eq(2)>p").text(window._leaderboardJSON[1].ratio);
-        
-        //Leaderboard STREAK test code
-        $("#leaderboardStreak>div:eq(1)>div:eq(1)>p").text(window._leaderboardJSON[0].username);
-        $("#leaderboardStreak>div:eq(1)>div:eq(2)>p").text(window._leaderboardJSON[0].streaks);
-        $("#leaderboardStreak>div:eq(2)>div:eq(1)>p").text(window._leaderboardJSON[1].username);
-        $("#leaderboardStreak>div:eq(2)>div:eq(2)>p").text(window._leaderboardJSON[1].streaks);
+        for(var i = maxVal; i > 0; i--){
+            for(var j = 0; j < window._leaderboardJSON.length; j++){
+                if(i == parseInt(window._leaderboardJSON[j].wins)){
+                    console.log(leaderboardIndex);
+                    $("#leaderboardWins>div:eq("+leaderboardIndex+")>div:eq(1)>p").text(window._leaderboardJSON[j].username);
+                    $("#leaderboardWins>div:eq("+leaderboardIndex+")>div:eq(2)>p").text(window._leaderboardJSON[j].wins);
+                    leaderboardIndex += 1;
+                }
+            }
+        }
+        //END OF WINS
     });
 }

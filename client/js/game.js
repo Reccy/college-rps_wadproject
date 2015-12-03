@@ -29,22 +29,26 @@ var compare = function(userChoice, computerChoice) {//Declare user and computer 
           $("#buttonRow").hide();//Hide images
           $("#intro-text").text("Hard Luck, the Computer Wins");//Print win message
           $("#intro-subtext").text("You chose Rock!\nThe computer chose Paper!");//Print win message
+           window._streak = 0;
           
           $(".lossesReplace").text(parseInt(window._losses) + 1);
           $(".gamesReplace").text(parseInt(window._wins) + parseInt(window._losses) + 1);
           $("#resetBtn").show();
           window.updateScore("losses");
+          window.updateStreak(window._streak);
           window._losses = parseInt(window._losses) + 1;
       }
       else if(computerChoice == "Scissors"){
           $("#buttonRow").hide();//Hide images
           $("#intro-text").text("Congratulations, You've Won!");//Print win message
           $("#intro-subtext").text("You chose Rock!\nThe computer chose Scissors!");//Print win message
+          window._streak += 1;
           
           $(".winsReplace").text(parseInt(window._wins) + 1);
           $(".gamesReplace").text(parseInt(window._wins) + parseInt(window._losses) + 1);
           $("#resetBtn").show();
           window.updateScore("wins");
+          window.updateStreak(window._streak);
           window._wins = parseInt(window._wins) + 1;
       }
   }
@@ -53,22 +57,26 @@ var compare = function(userChoice, computerChoice) {//Declare user and computer 
           $("#buttonRow").hide();//Hide images
           $("#intro-text").text("Congratulations, You've Won!");//Print win message
           $("#intro-subtext").text("You chose Paper!\nThe computer chose Rock!");//Print win message
-          
+           window._streak += 1;
+           
           $(".winsReplace").text(parseInt(window._wins) + 1);
           $(".gamesReplace").text(parseInt(window._wins) + parseInt(window._losses) + 1);
           $("#resetBtn").show();
           window.updateScore("wins");
+          window.updateStreak(window._streak);
           window._wins = parseInt(window._wins) + 1;
       }
       else if(computerChoice == "Scissors"){
           $("#buttonRow").hide();//Hide images
           $("#intro-text").text("Hard Luck, the Computer Wins");//Print win message
           $("#intro-subtext").text("You chose Paper!\nThe computer chose Scissors!");//Print win message
+           window._streak = 0;
           
           $(".lossesReplace").text(parseInt(window._losses) + 1);
           $(".gamesReplace").text(parseInt(window._wins) + parseInt(window._losses) + 1);
           $("#resetBtn").show();
           window.updateScore("losses");
+          window.updateStreak(window._streak);
           window._losses = parseInt(window._losses) + 1;
       }
   }
@@ -77,22 +85,26 @@ var compare = function(userChoice, computerChoice) {//Declare user and computer 
           $("#buttonRow").hide();//Hide images
           $("#intro-text").text("Hard Luck, the Computer Wins");//Print win message
           $("#intro-subtext").text("You chose Scissors!\nThe computer chose Rock!");//Print win message
+           window._streak = 0;
           
           $(".lossesReplace").text(parseInt(window._losses) + 1);
           $(".gamesReplace").text(parseInt(window._wins) + parseInt(window._losses) + 1);
           $("#resetBtn").show();
           window.updateScore("losses");
+          window.updateStreak(window._streak);
           window._losses = parseInt(window._losses) + 1;
       }
       else if(computerChoice == "Paper"){
           $("#buttonRow").hide();//Hide images
           $("#intro-text").text("Congratulations, You've Won!");//Print win message
           $("#intro-subtext").text("You chose Scissors!\nThe computer chose Paper!");//Print win message
+            window._streak += 1;
           
           $(".winsReplace").text(parseInt(window._wins) + 1);
           $(".gamesReplace").text(parseInt(window._wins) + parseInt(window._losses) + 1);
           $("#resetBtn").show();
           window.updateScore("wins");
+          window.updateStreak(window._streak);
           window._wins = parseInt(window._wins) + 1;
       }
   }

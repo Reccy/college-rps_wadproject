@@ -7,7 +7,7 @@
       <!-- verifyMe -->
     </details>
     <score>
-      <wins>21</wins>
+      <wins>51</wins>
       <losses>7</losses>
       <streaks>4</streaks>
       <ratio>3</ratio>
@@ -20,10 +20,10 @@
       <!-- testPw -->
     </details>
     <score>
-      <wins>17</wins>
-      <losses>17</losses>
+      <wins>31</wins>
+      <losses>26</losses>
       <streaks>0</streaks>
-      <ratio>1</ratio>
+      <ratio>1.1923076923077</ratio>
     </score>
   </user>
   <user>
@@ -48,6 +48,109 @@
       <losses>3</losses>
       <streaks>0</streaks>
       <ratio>2.6666666666667</ratio>
+    </score>
+  </user>
+  <user>
+    <details>
+      <username>Test1</username>
+      <password>$2y$10$353Exklxbkw0tpL7uZNDPOG1S.ZkDqoImNvY9w37pCBoT9dVFdU.a</password>
+      <!-- testPw -->
+    </details>
+    <score>
+      <wins>31</wins>
+      <losses>26</losses>
+      <streaks>0</streaks>
+      <ratio>1.1923076923077</ratio>
+    </score>
+  </user>
+  <user>
+    <details>
+      <username>Test2</username>
+      <password>$2y$10$353Exklxbkw0tpL7uZNDPOG1S.ZkDqoImNvY9w37pCBoT9dVFdU.a</password>
+      <!-- testPw -->
+    </details>
+    <score>
+      <wins>31</wins>
+      <losses>26</losses>
+      <streaks>0</streaks>
+      <ratio>1.1923076923077</ratio>
+    </score>
+  </user>
+  <user>
+    <details>
+      <username>Test3</username>
+      <password>$2y$10$353Exklxbkw0tpL7uZNDPOG1S.ZkDqoImNvY9w37pCBoT9dVFdU.a</password>
+      <!-- testPw -->
+    </details>
+    <score>
+      <wins>31</wins>
+      <losses>26</losses>
+      <streaks>0</streaks>
+      <ratio>1.1923076923077</ratio>
+    </score>
+  </user>
+  <user>
+    <details>
+      <username>Test4</username>
+      <password>$2y$10$353Exklxbkw0tpL7uZNDPOG1S.ZkDqoImNvY9w37pCBoT9dVFdU.a</password>
+      <!-- testPw -->
+    </details>
+    <score>
+      <wins>31</wins>
+      <losses>26</losses>
+      <streaks>0</streaks>
+      <ratio>1.1923076923077</ratio>
+    </score>
+  </user>
+  <user>
+    <details>
+      <username>Test5</username>
+      <password>$2y$10$353Exklxbkw0tpL7uZNDPOG1S.ZkDqoImNvY9w37pCBoT9dVFdU.a</password>
+      <!-- testPw -->
+    </details>
+    <score>
+      <wins>31</wins>
+      <losses>26</losses>
+      <streaks>0</streaks>
+      <ratio>1.1923076923077</ratio>
+    </score>
+  </user>
+  <user>
+    <details>
+      <username>Test6</username>
+      <password>$2y$10$353Exklxbkw0tpL7uZNDPOG1S.ZkDqoImNvY9w37pCBoT9dVFdU.a</password>
+      <!-- testPw -->
+    </details>
+    <score>
+      <wins>31</wins>
+      <losses>26</losses>
+      <streaks>0</streaks>
+      <ratio>1.1923076923077</ratio>
+    </score>
+  </user>
+  <user>
+    <details>
+      <username>Test7</username>
+      <password>$2y$10$353Exklxbkw0tpL7uZNDPOG1S.ZkDqoImNvY9w37pCBoT9dVFdU.a</password>
+      <!-- testPw -->
+    </details>
+    <score>
+      <wins>31</wins>
+      <losses>26</losses>
+      <streaks>0</streaks>
+      <ratio>1.1923076923077</ratio>
+    </score>
+  </user>
+  <user>
+    <details>
+      <username>Bill Withers</username>
+      <password>$2y$10$NcLurpaS9qN7LZKNJkpQZe2kemiN1AXl2obJ/rILqy8uwHKHe3Mdu</password>
+    </details>
+    <score>
+      <wins>1</wins>
+      <losses>2</losses>
+      <streaks>0</streaks>
+      <ratio>0.5</ratio>
     </score>
   </user>
 </users>
