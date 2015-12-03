@@ -301,7 +301,7 @@ var getLeaderboard = function(){
             }
         }
         
-        for(var i = maxVal; i > 0; i--){
+        for(var i = maxVal; i >= 0; i--){
             for(var j = 0; j < window._leaderboardJSON.length; j++){
                 if(i == parseInt(window._leaderboardJSON[j].wins)){
                     console.log(leaderboardIndex);
@@ -312,5 +312,47 @@ var getLeaderboard = function(){
             }
         }
         //END OF WINS
+         //Sort STREAK
+         maxVal = 0;
+         leaderboardIndex = 1;
+        //Find the largest value
+        for(var i = 0; i < window._leaderboardJSON.length; i++){
+            if(maxVal < parseInt(window._leaderboardJSON[i].streaks)){
+                maxVal = window._leaderboardJSON[i].streaks;
+            }
+        }
+        
+        for(var i = maxVal; i >= 0; i--){
+            for(var j = 0; j < window._leaderboardJSON.length; j++){
+                if(i == parseInt(window._leaderboardJSON[j].streaks)){
+                    console.log(leaderboardIndex);
+                    $("#leaderboardStreak>div:eq("+leaderboardIndex+")>div:eq(1)>p").text(window._leaderboardJSON[j].username);
+                    $("#leaderboardStreak>div:eq("+leaderboardIndex+")>div:eq(2)>p").text(window._leaderboardJSON[j].streaks);
+                    leaderboardIndex += 1;
+                }
+            }
+        }
+        //END OF STREAK 
+        //Sort RATIO
+        maxVal = 0;
+        leaderboardIndex = 1;
+        //Find the largest value
+        for(var i = 0; i < window._leaderboardJSON.length; i++){
+            if(maxVal < parseInt(window._leaderboardJSON[i].ratio)){
+                maxVal = window._leaderboardJSON[i].ratio;
+            }
+        }
+        
+        for(var i = maxVal; i >= 0; i--){
+            for(var j = 0; j < window._leaderboardJSON.length; j++){
+                if(i == parseInt(window._leaderboardJSON[j].ratio)){
+                    console.log(leaderboardIndex);
+                    $("#leaderboardRatio>div:eq("+leaderboardIndex+")>div:eq(1)>p").text(window._leaderboardJSON[j].username);
+                    $("#leaderboardRatio>div:eq("+leaderboardIndex+")>div:eq(2)>p").text(window._leaderboardJSON[j].ratio);
+                    leaderboardIndex += 1;
+                }
+            }
+        }
+        //END OF RATIO
     });
 }
