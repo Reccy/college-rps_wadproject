@@ -347,15 +347,15 @@ var getLeaderboard = function(){
             }
         }
         
-        for(var i = maxVal; i >= 0; i--){
+        window._leaderboardJSON.sort(function(a, b){return a.ratio-b.ratio});
+        window._leaderboardJSON.reverse();
+        
+
             for(var j = 0; j < window._leaderboardJSON.length; j++){
-                if(i == parseInt(window._leaderboardJSON[j].ratio)){
-                    $("#leaderboardRatio>div:eq("+leaderboardIndex+")>div:eq(1)>p").text(window._leaderboardJSON[j].username);
-                    $("#leaderboardRatio>div:eq("+leaderboardIndex+")>div:eq(2)>p").text(window._leaderboardJSON[j].ratio);
-                    leaderboardIndex += 1;
-                }
+                $("#leaderboardRatio>div:eq("+leaderboardIndex+")>div:eq(1)>p").text(window._leaderboardJSON[j].username);
+                $("#leaderboardRatio>div:eq("+leaderboardIndex+")>div:eq(2)>p").text(window._leaderboardJSON[j].ratio);
+                leaderboardIndex += 1;
             }
-        }
         //END OF RATIO
     });
 }
