@@ -379,6 +379,10 @@ function displayXML(){
     $("#loading").show();
     $("#body").load("rss.php",function(){
         $("body").css("background-color","#3498db"); 
+        if(window._username == "USERNAME_HERE"){
+            $("#registerBtn").show();
+            $("#loginBtn").show();
+        }
         $("#loading").hide();
     });
 }
