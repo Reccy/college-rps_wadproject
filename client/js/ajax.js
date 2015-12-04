@@ -199,7 +199,6 @@ function loginSend(){
                         window._username = userJSON.username;
                         window._wins = userJSON.wins;
                         window._losses = userJSON.losses;
-                        window._streak = userJSON.streaks;
                         window._ratio = userJSON.ratio;
                         
                         window._totalGames = parseInt(window._wins) + parseInt(window._losses);
@@ -242,7 +241,6 @@ function loginSend(){
                         window._username = userJSON.username;
                         window._wins = userJSON.wins;
                         window._losses = userJSON.losses;
-                        window._streak = userJSON.streaks;
                         window._ratio = userJSON.ratio;
                         
                         window._totalGames = parseInt(window._wins) + parseInt(window._losses);
@@ -304,7 +302,6 @@ var getScore = function(){
             window._username = userJSON.username;
             window._wins = userJSON.wins;
             window._losses = userJSON.losses;
-            window._streak = userJSON.streaks;
             window._ratio = userJSON.ratio;
             
             window._totalGames = parseInt(window._wins) + parseInt(window._losses);
