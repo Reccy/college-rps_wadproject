@@ -10,7 +10,7 @@
         $proc->importStyleSheet($xsl);
         
         echo $proc->transformToXML($xml);
-        echo "<p class='col-sm-12' id='intro-subtext'>Link for RSS Reader: https://rps-wadproject-reccy-1.c9users.io/rss.xml</p>";
+        echo "<p class='col-sm-12' id='intro-subtext'>Link for RSS Reader: https://".$_SERVER['HTTP_HOST']."/rss.xml";
         exit();
     } else {
         echo "<p id='intro-text'>This is where the RSS feed should be.</p>
