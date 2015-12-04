@@ -13,13 +13,15 @@ function compChoice(){
  
  
 var compare = function(userChoice, computerChoice) {//Declare user and computer choices as variables
-    if (userChoice == computerChoice) {
+    $("#buttonRow").fadeOut(2000,function(){
+        if (userChoice == computerChoice) {
         //If user and computer choose the same, it's a draw
-        $("#buttonRow").hide();//Hide images
-        $("#intro-text").text("You've drawn with the computer!");//Print draw
-        $("#intro-subtext").html("<br/><br/>");//Clear text
-        $("#resetBtn").show();
-        $("#loading").hide();
+        
+            //Hide images
+            $("#intro-text").text("You've drawn with the computer!");//Print draw
+            $("#intro-subtext").html("<br/><br/>");//Clear text
+            $("#resetBtn").show();
+            $("#loading").hide();
     }//End If
   
   else if(userChoice == "Rock"){
@@ -111,6 +113,7 @@ var compare = function(userChoice, computerChoice) {//Declare user and computer 
           window._wins = parseInt(window._wins) + 1;
       }
   }
+});
 }
 
 function rockClicked(){
