@@ -187,49 +187,7 @@ function loginSend() {
     };
 
     $.post("../../server/loginform.php", data, function(returnData) {
-        if (returnData == "test_login") { // If the password matches, login the user
-            $("#body").hide();
-            $("#body").load("client/html/welcome.html", function() {
-                $("body").css("background-color", "#3498db");
-                $("#loginBtn").css("display", "none");
-                $("#registerBtn").css("display", "none");
-                $("#leaderboardsBtn").show();
-                $("#playBtn").show();
-                $("#logoutBtn").show();
-
-                $.post("../../server/userdata.php", {
-                    "Username": "Test"
-                }, function(userData) { //POST to get the other details from the user
-                    if (userData == "error_unknown") {
-                        displayError();
-                        $("#loading").hide();
-                    } else {
-                        var userJSON = JSON.parse(userData);
-
-                        window._username = userJSON.username;
-                        window._wins = userJSON.wins;
-                        window._losses = userJSON.losses;
-                        window._ratio = userJSON.ratio;
-
-                        window._totalGames = parseInt(window._wins) + parseInt(window._losses);
-
-                        $(".usernameReplace").html(window._username);
-                        $(".winsReplace").html(window._wins);
-                        $(".lossesReplace").html(window._losses);
-                        $(".gamesReplace").html(window._totalGames);
-
-                        $("#leaderboardsBtn").show();
-                        $("#logoutBtn").show();
-                        $("#playBtn").show();
-
-                        $("#usernameText").css("display", "inline-block");
-                        $("#stats").css("display", "inline-block");
-                        $("#body").slideDown();
-                        $("#loading").hide();
-                    }
-                });
-            });
-        } else if (returnData == "error_special_chars") { // If the user types in an illegal character, alert them.
+        if (returnData == "error_special_chars") { // If the user types in an illegal character, alert them.
             loginError("Please only type in alphanumeric characters. E.g. a-z 0-9");
         } else if (returnData == "password_match") { // If the password matches, login the user
             $("#body").hide();
