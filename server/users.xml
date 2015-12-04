@@ -20,10 +20,10 @@
       <!-- testPw -->
     </details>
     <score>
-      <wins>5</wins>
-      <losses>7</losses>
-      <streaks>4</streaks>
-      <ratio>0.71428571428571</ratio>
+      <wins>14</wins>
+      <losses>14</losses>
+      <streaks>41111</streaks>
+      <ratio>1</ratio>
     </score>
   </user>
   <user>
@@ -151,6 +151,30 @@
       <losses>2</losses>
       <streaks>0</streaks>
       <ratio>0.5</ratio>
+    </score>
+  </user>
+  <user>
+    <details>
+      <username>ayylmao</username>
+      <password>$2y$10$YNFGb9MTkCfT4zGbdeya/uNLNz0LeDR7P92eMlSY8GTJGr77hq7lq</password>
+    </details>
+    <score>
+      <wins>15</wins>
+      <losses>16</losses>
+      <streaks>5</streaks>
+      <ratio>0.9375</ratio>
+    </score>
+  </user>
+  <user>
+    <details>
+      <username>ToppusKekkus</username>
+      <password>$2y$10$lLZfGABclP2C3NGWM7Pi0emqwJzI0ylDmmgGKyR4B6mkY6p3zEfGu</password>
+    </details>
+    <score>
+      <wins>0</wins>
+      <losses>0</losses>
+      <streaks>0</streaks>
+      <ratio>0</ratio>
     </score>
   </user>
 </users>

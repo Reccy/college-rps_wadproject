@@ -10,6 +10,8 @@
     
 // When jQuery is ready, hide the loading screen
 $(document).ready(function(){
+    $("#body").hide();
+    $("#body").slideDown();
     $("#loading").hide();
     $("#playBtn").hide();
     $("#leaderboardsBtn").hide();
@@ -57,10 +59,12 @@ function registerError(error){
 //When the login button is clicked, load login.html
 function loginBtnClicked(){
     $("#loading").show();
+    $("#body").hide();
     $("#body").load("client/html/login.html",function(){
         $("body").css("background-color","#2ecc71");
         $("#loginBtn").css("display","none");
         $("#registerBtn").css("display","inline-block"); 
+        $("#body").slideDown();
         $("#loading").hide();
     });
 }
@@ -68,33 +72,36 @@ function loginBtnClicked(){
 //When the register button is clicked, load register.html
 function registerBtnClicked(){
     $("#loading").show()
+    $("#body").hide();
     $("#body").load("client/html/register.html",function(){
         $("body").css("background-color","#e74c3c");
         $("#loginBtn").css("display","inline-block");
-        $("#registerBtn").css("display","none"); 
+        $("#registerBtn").css("display","none");
+        $("#body").slideDown();
         $("#loading").hide();
     });
 }
 
 function playBtnClicked(){
     $("#loading").show();
+    $("#body").hide();
     $("#body").load("client/html/game.html",function(){
-        $("body").css("background-color","#2ecc71");    
+        $("body").css("background-color","#2ecc71");
+        $("#body").slideDown();
         $("#loading").hide();
     });
 }
 
 function leaderboardsBtnClicked(){
     $("#loading").show();
-    $("#body").load("client/html/leaderboard.html",function(){
-        $("body").css("background-color","#e67e22");
-    });
-    
+    $("#body").load("client/html/leaderboard.html");
 }
 
 //When the logout button is clicked, load the original welcome screen
 function logoutBtnClicked(){
     $("#loading").show();
+    
+    $("#body").hide();
     $("#body").load("client/html/landing.html",function(){
         $("body").css("background-color","#3498db");
         $("#logoutBtn").hide();
@@ -110,6 +117,7 @@ function logoutBtnClicked(){
         window._streak = 0;
         window._ratio = 0;
         window._totalGames = 0;
+        $("#body").slideDown();
         $("#loading").hide();
     });
 }
@@ -133,38 +141,46 @@ function registerSend(){
     $.post("../../server/registerform.php",data,function(returnData){
         if(returnData == "error_password_confirm"){ //If the user doesn't confirm their password, alert the user
             registerError("Please verify that your password is the same in both fields!");
+            $("#loading").hide();
         } else if(returnData == "user_exists"){ //If the username already exists, alert the user.
             registerError("A user already exists with this username!");
+            $("#loading").hide();
         } else if(returnData == "user_added"){ //If the user is succesfully added, alert the user.
             registerError("You have successfully registered! Logging you in...");
             loginSend(); //Automatically login
         } else if(returnData == "error_special_chars"){ // If the user types in an illegal character, alert them.
             registerError("Please only type in alphanumeric characters. E.g. a-z 0-9");
+            $("#loading").hide();
         } else if(returnData == "error_unchecked_box"){ // If the user doesn't accept the password condition, alert them.
             registerError("You must accept the condition to use a unique password to register.");
+            $("#loading").hide();
         } else if(returnData == "error_username_length"){
             registerError("Your username must be at least 4 characters long");
+            $("#loading").hide();
         } else if(returnData == "error_password_length"){
             registerError("Your password must be at least 6 characters long");
+            $("#loading").hide();
         } else if(returnData =="error_unknown"){ // If something goes terribly wrong, alert the user
             displayError();
+            $("#loading").hide();
         } else if(returnData =="error_special"){ // If the user inserts USERNAME_HERE, alert the user that this is a forbidden username
             registerError("This is a forbidden username. Try another one.");
+            $("#loading").hide();
         }
     });
-    $("#loading").hide();
 }
 
 //Send login form to server
 function loginSend(){
     $("#loading").show();
-
+    
     var user = $("#userName").val();
     var pass = $("#userPassword").val();
     var data = {"Username":user,"Password":pass};
     
     $.post("../../server/loginform.php",data,function(returnData){
         if(returnData == "test_login"){ // If the password matches, login the user
+            $("#body").hide();
             $("#body").load("client/html/welcome.html", function(){
                 $("body").css("background-color","#3498db");
                 $("#loginBtn").css("display","none");
@@ -199,6 +215,7 @@ function loginSend(){
                         
                         $("#usernameText").css("display","inline-block");
                         $("#stats").css("display","inline-block");
+                        $("#body").slideDown();
                         $("#loading").hide();
                     }
                 }); 
@@ -206,44 +223,46 @@ function loginSend(){
         } else if(returnData == "error_special_chars"){ // If the user types in an illegal character, alert them.
             loginError("Please only type in alphanumeric characters. E.g. a-z 0-9");
         } else if(returnData == "password_match"){ // If the password matches, login the user
-            $("#body").load("client/html/welcome.html");
-            $("body").css("background-color","#2ecc71");
-            $("#loginBtn").css("display","none");
-            $("#registerBtn").css("display","none");
-            $("#leaderboardsBtn").show();
-            $("#playBtn").show();
-            $("#logoutBtn").show();
-            
-            $.post("../../server/userdata.php",{"Username":user},function(userData){ //POST to get the other details from the user
-                if(userData == "error_unknown"){
-                    displayError();
-                    $("#loading").hide();
-                } else {
-                    var userJSON = JSON.parse(userData);
-                    
-                    window._username = userJSON.username;
-                    window._wins = userJSON.wins;
-                    window._losses = userJSON.losses;
-                    window._streak = userJSON.streaks;
-                    window._ratio = userJSON.ratio;
-                    
-                    window._totalGames = parseInt(window._wins) + parseInt(window._losses);
-                    
-                    $(".usernameReplace").html(window._username);
-                    $(".winsReplace").html(window._wins);
-                    $(".lossesReplace").html(window._losses);
-                    $(".gamesReplace").html(window._totalGames);
-                    
-                    $("#leaderboardsBtn").show();
-                    $("#logoutBtn").show();
-                    $("#playBtn").show();
-                    
-                    $("#usernameText").css("display","inline-block");
-                    $("#stats").css("display","inline-block");
-                    $("#loading").hide();
-                }
+            $("#body").hide();
+            $("#body").load("client/html/welcome.html", function(){
+                $("body").css("background-color","#3498db");
+                $("#loginBtn").css("display","none");
+                $("#registerBtn").css("display","none");
+                $("#leaderboardsBtn").show();
+                $("#playBtn").show();
+                $("#logoutBtn").show();
+                
+                $.post("../../server/userdata.php",{"Username":user},function(userData){ //POST to get the other details from the user
+                    if(userData == "error_unknown"){
+                        displayError();
+                        $("#loading").hide();
+                    } else {
+                        var userJSON = JSON.parse(userData);
+                        
+                        window._username = userJSON.username;
+                        window._wins = userJSON.wins;
+                        window._losses = userJSON.losses;
+                        window._streak = userJSON.streaks;
+                        window._ratio = userJSON.ratio;
+                        
+                        window._totalGames = parseInt(window._wins) + parseInt(window._losses);
+                        
+                        $(".usernameReplace").html(window._username);
+                        $(".winsReplace").html(window._wins);
+                        $(".lossesReplace").html(window._losses);
+                        $(".gamesReplace").html(window._totalGames);
+                        
+                        $("#leaderboardsBtn").show();
+                        $("#logoutBtn").show();
+                        $("#playBtn").show();
+                        
+                        $("#usernameText").css("display","inline-block");
+                        $("#stats").css("display","inline-block");
+                        $("#loading").hide();
+                        $("#body").slideDown();
+                    }
+                });
             });
-            
         } else if(returnData == "password_mismatch"){ // If the username or password doesn't match, alert the user
             $("#loading").hide();
             loginError("Username/Password Incorrect!");
@@ -296,8 +315,7 @@ var getScore = function(){
 // Returns the scores
 var getLeaderboard = function(){
     $("#loading").show();
-    $(".leaderboardPanel").hide();
-    $("#intro-text").hide();
+    $("#body").hide();
     
     $.post("../../server/getleaderboard.php",function(returnData){ //POST to get the JSON of the users
         if(returnData == "error_unknown"){
@@ -367,8 +385,8 @@ var getLeaderboard = function(){
                 leaderboardIndex += 1;
             }
             
-            $("#intro-text").show();
-            $(".leaderboardPanel").show();
+            $("body").css("background-color","#e67e22");
+            $("#body").slideDown();
             $("#loading").hide();
         //END OF RATIO
     });
@@ -377,12 +395,14 @@ var getLeaderboard = function(){
 // Displays the XML
 function displayXML(){
     $("#loading").show();
+    $("#body").hide();
     $("#body").load("rss.php",function(){
         $("body").css("background-color","#3498db"); 
         if(window._username == "USERNAME_HERE"){
             $("#registerBtn").show();
             $("#loginBtn").show();
         }
+        $("#body").slideDown();
         $("#loading").hide();
     });
 }

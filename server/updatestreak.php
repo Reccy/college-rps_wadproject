@@ -16,8 +16,8 @@
         
         for($i = 0; $i < $sxe->count(); $i++){
             if($sxe->user[$i]->details->username == $username){
-                if($sxe->user[$i]->score->streaks < $value){    //If the inserted value is more than the current streak, update the streak
-                    $sxe->user[$i]->score->streaks = $value;
+                if((int)$sxe->user[$i]->score->streaks < (int)$value){    //If the inserted value is more than the current streak, update the streak
+                    $sxe->user[$i]->score->streaks = (int)$value;
                 }
                 
             }

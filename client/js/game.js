@@ -13,14 +13,16 @@ function compChoice(){
  
  
 var compare = function(userChoice, computerChoice) {//Declare user and computer choices as variables
-    $("#buttonRow").fadeOut(2000,function(){
+    $("#body").slideUp(1000,function(){
         if (userChoice == computerChoice) {
         //If user and computer choose the same, it's a draw
         
             //Hide images
+            $("#buttonRow").hide();
             $("#intro-text").text("You've drawn with the computer!");//Print draw
             $("#intro-subtext").html("<br/><br/>");//Clear text
             $("#resetBtn").show();
+            $("#body").slideDown(1000);
             $("#loading").hide();
     }//End If
   
@@ -37,6 +39,7 @@ var compare = function(userChoice, computerChoice) {//Declare user and computer 
           window.updateScore("losses");
           window.updateStreak(window._streak);
           window._losses = parseInt(window._losses) + 1;
+          $("#body").slideDown(1000);
           $("#loading").hide();
       }
       else if(computerChoice == "Scissors"){
@@ -51,6 +54,7 @@ var compare = function(userChoice, computerChoice) {//Declare user and computer 
           window.updateScore("wins");
           window.updateStreak(window._streak);
           window._wins = parseInt(window._wins) + 1;
+          $("#body").slideDown(1000);
           $("#loading").hide();
       }
   }
@@ -67,6 +71,7 @@ var compare = function(userChoice, computerChoice) {//Declare user and computer 
           window.updateScore("wins");
           window.updateStreak(window._streak);
           window._wins = parseInt(window._wins) + 1;
+          $("#body").slideDown(1000);
           $("#loading").hide();
       }
       else if(computerChoice == "Scissors"){
@@ -81,6 +86,7 @@ var compare = function(userChoice, computerChoice) {//Declare user and computer 
           window.updateScore("losses");
           window.updateStreak(window._streak);
           window._losses = parseInt(window._losses) + 1;
+          $("#body").slideDown(1000);
           $("#loading").hide();
       }
   }
@@ -97,6 +103,7 @@ var compare = function(userChoice, computerChoice) {//Declare user and computer 
           window.updateScore("losses");
           window.updateStreak(window._streak);
           window._losses = parseInt(window._losses) + 1;
+          $("#body").slideDown(1000);
           $("#loading").hide();
       }
       else if(computerChoice == "Paper"){
@@ -111,6 +118,8 @@ var compare = function(userChoice, computerChoice) {//Declare user and computer 
           window.updateScore("wins");
           window.updateStreak(window._streak);
           window._wins = parseInt(window._wins) + 1;
+          $("#body").slideDown(1000);
+          $("#loading").hide();
       }
   }
 });
@@ -132,10 +141,14 @@ function scissorsClicked(){
 }
 
 function resetClicked(){
-    $("#buttonRow").show();//Show options
-    $("#intro-text").text("Click a button to play!");//Reset the text
-    $("#intro-subtext").html("<br/><br/>");//Clear text
-    $("#resetBtn").hide();//Hide Button
+    $("#body").slideUp(function(){
+        $("#buttonRow").show();//Show options
+        $("#intro-text").text("Click a button to play!");//Reset the text
+        $("#intro-subtext").html("<br/><br/>");//Clear text
+        $("#resetBtn").hide(function(){
+            $("#body").slideDown();
+        });//Hide Button
+    });
 }
 
 
