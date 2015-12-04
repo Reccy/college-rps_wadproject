@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+  <channel>
+    <title>RPS - Champions</title>
+    <link>https://rps-wadproject-reccy-1.c9users.io/</link>
+    <description>The champions of Rock, Paper, Scissors!</description>
+    <item>
+      <title>Winner Champion: Test</title>
+      <link>https://rps-wadproject-reccy-1.c9users.io/</link>
+      <guid>https://rps-wadproject-reccy-1.c9users.io/</guid>
+      <pubDate>Friday 4th of December 2015 12:33:00 AM</pubDate>
+      <description>Test has 98 wins!</description>
+    </item>
+    <item>
+      <title>Ratio Champion: Reccy</title>
+      <link>https://rps-wadproject-reccy-1.c9users.io/</link>
+      <guid>https://rps-wadproject-reccy-1.c9users.io/</guid>
+      <pubDate>Thursday 3rd of December 2015 11:13:10 PM</pubDate>
+      <description>Reccy has a win/loss ratio of 5!</description>
+    </item>
+    <item>
+      <title>Streak Champion: Test</title>
+      <link>https://rps-wadproject-reccy-1.c9users.io/</link>
+      <guid>https://rps-wadproject-reccy-1.c9users.io/</guid>
+      <pubDate>Friday 4th of December 2015 12:32:25 AM</pubDate>
+      <description>Test has a winning streak of 8!</description>
+    </item>
+  </channel>
+</rss>

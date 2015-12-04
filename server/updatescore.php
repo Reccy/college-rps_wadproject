@@ -49,6 +49,8 @@
     $dom->loadXML($sxe->asXML());
     $dom->save("users.xml");
     
+    include("updaterss.php");
+    
     echo "user_updated"; //Successfully updated user
     exit();
 ?>

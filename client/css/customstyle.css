@@ -471,3 +471,32 @@ body{
 #resetBtn{
     display:none;
 }
+
+/* RSS button */
+#rssBtn{
+    background-color:transparent;
+    border:0px;
+    width:50px;
+    height:50px;
+}
+
+#rssBtn>button{
+    width:100%;
+    height:100%;
+}
+
+/* XML Error */
+#xmlError{
+    color:white;
+}
+
+/* XML Panels */
+.xmlPanel{
+    background-color:#34495e;
+    color:white;
+    border:5px solid #3498DB;
+}
+
+.xmlPanel>p{
+    text-align:center;
+}

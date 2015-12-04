@@ -359,3 +359,9 @@ var getLeaderboard = function(){
         //END OF RATIO
     });
 }
+
+// Displays the XML
+function displayXML(){
+    $("#body").load("rss.php");
+    $("body").css("background-color","#3498db");
+}

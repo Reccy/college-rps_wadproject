@@ -48,6 +48,9 @@
             </div>
             <div class="modal-body">
               <p>Aaron Meaney<br>Alex Corcoran<br>Mark Hayden<br><br>Having problems? Need help?<br>Too bad.<br>This is a college project.<br>:-)</p>
+              <button id="rssBtn" onclick="displayXML();" data-dismiss="modal">
+                <img src="/client/img/rss.png" class="img-responsive"/>
+              </button>
             </div>
             <div class="modal-footer">
               <button type="button" class="menu-button b-orange" data-dismiss="modal">Close</button>
