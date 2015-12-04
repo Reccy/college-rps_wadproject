@@ -21,7 +21,7 @@ var compare = function(userChoice, computerChoice) {//Declare user and computer 
         $("#intro-text").text("You've drawn with the computer!");//Print draw
         $("#intro-subtext").html("<br/><br/>");//Clear text
         $("#resetBtn").show();
-       
+        $("#loading").hide();
     }//End If
   
   else if(userChoice == "Rock"){
@@ -37,6 +37,7 @@ var compare = function(userChoice, computerChoice) {//Declare user and computer 
           window.updateScore("losses");
           window.updateStreak(window._streak);
           window._losses = parseInt(window._losses) + 1;
+          $("#loading").hide();
       }
       else if(computerChoice == "Scissors"){
           $("#buttonRow").hide();//Hide images
@@ -50,6 +51,7 @@ var compare = function(userChoice, computerChoice) {//Declare user and computer 
           window.updateScore("wins");
           window.updateStreak(window._streak);
           window._wins = parseInt(window._wins) + 1;
+          $("#loading").hide();
       }
   }
   else if(userChoice == "Paper"){
@@ -65,6 +67,7 @@ var compare = function(userChoice, computerChoice) {//Declare user and computer 
           window.updateScore("wins");
           window.updateStreak(window._streak);
           window._wins = parseInt(window._wins) + 1;
+          $("#loading").hide();
       }
       else if(computerChoice == "Scissors"){
           $("#buttonRow").hide();//Hide images
@@ -78,6 +81,7 @@ var compare = function(userChoice, computerChoice) {//Declare user and computer 
           window.updateScore("losses");
           window.updateStreak(window._streak);
           window._losses = parseInt(window._losses) + 1;
+          $("#loading").hide();
       }
   }
   else if(userChoice == "Scissors"){
@@ -93,6 +97,7 @@ var compare = function(userChoice, computerChoice) {//Declare user and computer 
           window.updateScore("losses");
           window.updateStreak(window._streak);
           window._losses = parseInt(window._losses) + 1;
+          $("#loading").hide();
       }
       else if(computerChoice == "Paper"){
           $("#buttonRow").hide();//Hide images

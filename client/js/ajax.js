@@ -22,25 +22,9 @@ $.ajaxSetup({
     cache: false
 });
 
-// When starting an AJAX request, show the loading screen
-$(document).ajaxStart(function(){
-    $("#loading").show();
-    window._ajaxRunning = true;
-});
-
-$(document).ajaxStop(function(){
-    window._ajaxRunning = false;
-})
-
 // When something goes wrong with AJAX, display an error.
 $( document ).ajaxError(function() {
     displayError();
-});
-
-// When an AJAX request is complete, hide the loading screen
-$( document ).ajaxComplete(function() {
-  $("#loading").hide();
-  window._ajaxRunning = false;
 });
 
 // Responsive code
@@ -73,52 +57,68 @@ function registerError(error){
 
 //When the login button is clicked, load login.html
 function loginBtnClicked(){
-    $("#body").load("client/html/login.html");
-    $("body").css("background-color","#2ecc71");
-    $("#loginBtn").css("display","none");
-    $("#registerBtn").css("display","inline-block");
+    $("#loading").show();
+    $("#body").load("client/html/login.html",function(){
+        $("body").css("background-color","#2ecc71");
+        $("#loginBtn").css("display","none");
+        $("#registerBtn").css("display","inline-block"); 
+        $("#loading").hide();
+    });
 }
 
 //When the register button is clicked, load register.html
 function registerBtnClicked(){
-    $("#body").load("client/html/register.html");
-    $("body").css("background-color","#e74c3c");
-    $("#loginBtn").css("display","inline-block");
-    $("#registerBtn").css("display","none");
+    $("#loading").show()
+    $("#body").load("client/html/register.html",function(){
+        $("body").css("background-color","#e74c3c");
+        $("#loginBtn").css("display","inline-block");
+        $("#registerBtn").css("display","none"); 
+        $("#loading").hide();
+    });
 }
 
 function playBtnClicked(){
-    $("#body").load("client/html/game.html");
-    $("body").css("background-color","#2ecc71");
-    
+    $("#loading").show();
+    $("#body").load("client/html/game.html",function(){
+        $("body").css("background-color","#2ecc71");    
+        $("#loading").hide();
+    });
 }
 
 function leaderboardsBtnClicked(){
-    $("#body").load("client/html/leaderboard.html");
-    $("body").css("background-color","#e67e22");
+    $("#loading").show();
+    $("#body").load("client/html/leaderboard.html",function(){
+        $("body").css("background-color","#e67e22");
+    });
+    
 }
 
 //When the logout button is clicked, load the original welcome screen
 function logoutBtnClicked(){
-    $("#body").load("client/html/landing.html");
-    $("body").css("background-color","#3498db");
-    $("#logoutBtn").hide();
-    $("#leaderboardsBtn").hide();
-    $("#playBtn").hide();
-    $("#loginBtn").show();
-    $("#registerBtn").show();
-    $("#usernameText").css("display","none");
-    $("#stats").css("display","none");
-    window._username = "USERNAME_HERE";
-    window._wins = 0;
-    window._losses = 0;
-    window._streak = 0;
-    window._ratio = 0;
-    window._totalGames = 0;
+    $("#loading").show();
+    $("#body").load("client/html/landing.html",function(){
+        $("body").css("background-color","#3498db");
+        $("#logoutBtn").hide();
+        $("#leaderboardsBtn").hide();
+        $("#playBtn").hide();
+        $("#loginBtn").show();
+        $("#registerBtn").show();
+        $("#usernameText").css("display","none");
+        $("#stats").css("display","none");
+        window._username = "USERNAME_HERE";
+        window._wins = 0;
+        window._losses = 0;
+        window._streak = 0;
+        window._ratio = 0;
+        window._totalGames = 0;
+        $("#loading").hide();
+    });
 }
 
 //Send register form to server
 function registerSend(){
+    $("#loading").show();
+    
     var user = $("#userName").val();
     var pass = $("#userPassword").val();
     var passconf = $("#userPasswordConfirm").val();
@@ -154,10 +154,13 @@ function registerSend(){
             registerError("This is a forbidden username. Try another one.");
         }
     });
+    $("#loading").hide();
 }
 
 //Send login form to server
 function loginSend(){
+    $("#loading").show();
+
     var user = $("#userName").val();
     var pass = $("#userPassword").val();
     var data = {"Username":user,"Password":pass};
@@ -175,6 +178,7 @@ function loginSend(){
                 $.post("../../server/userdata.php",{"Username":"Test"},function(userData){ //POST to get the other details from the user
                     if(userData == "error_unknown"){
                         displayError();
+                        $("#loading").hide();
                     } else {
                         var userJSON = JSON.parse(userData);
                         
@@ -197,6 +201,7 @@ function loginSend(){
                         
                         $("#usernameText").css("display","inline-block");
                         $("#stats").css("display","inline-block");
+                        $("#loading").hide();
                     }
                 }); 
             });
@@ -214,6 +219,7 @@ function loginSend(){
             $.post("../../server/userdata.php",{"Username":user},function(userData){ //POST to get the other details from the user
                 if(userData == "error_unknown"){
                     displayError();
+                    $("#loading").hide();
                 } else {
                     var userJSON = JSON.parse(userData);
                     
@@ -236,12 +242,15 @@ function loginSend(){
                     
                     $("#usernameText").css("display","inline-block");
                     $("#stats").css("display","inline-block");
+                    $("#loading").hide();
                 }
             });
             
         } else if(returnData == "password_mismatch"){ // If the username or password doesn't match, alert the user
+            $("#loading").hide();
             loginError("Username/Password Incorrect!");
         } else if(returnData == "error_unknown"){ // If something goes terribly wrong, alert the user
+            $("#loading").hide();
             displayError();
         }
     });
@@ -290,9 +299,14 @@ var getScore = function(){
 
 // Returns the scores
 var getLeaderboard = function(){
+    $("#loading").show();
+    $(".leaderboardPanel").hide();
+    $("#intro-text").hide();
+    
     $.post("../../server/getleaderboard.php",function(returnData){ //POST to get the JSON of the users
         if(returnData == "error_unknown"){
             displayError();
+            $("#loading").hide();
         }
     }).always(function(returnData){
         window._leaderboardJSON = JSON.parse(returnData);
@@ -356,12 +370,19 @@ var getLeaderboard = function(){
                 $("#leaderboardRatio>div:eq("+leaderboardIndex+")>div:eq(2)>p").text(window._leaderboardJSON[j].ratio);
                 leaderboardIndex += 1;
             }
+            
+            $("#intro-text").show();
+            $(".leaderboardPanel").show();
+            $("#loading").hide();
         //END OF RATIO
     });
 }
 
 // Displays the XML
 function displayXML(){
-    $("#body").load("rss.php");
-    $("body").css("background-color","#3498db");
+    $("#loading").show();
+    $("#body").load("rss.php",function(){
+        $("body").css("background-color","#3498db"); 
+        $("#loading").hide();
+    });
 }
