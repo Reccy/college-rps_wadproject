@@ -10,7 +10,6 @@
     
 // When jQuery is ready, hide the loading screen
 $(document).ready(function(){
-    console.log("JQuery is ready!");
     $("#loading").hide();
     $("#playBtn").hide();
     $("#leaderboardsBtn").hide();
@@ -132,7 +131,6 @@ function registerSend(){
     var data = {"Username":user,"Password":pass,"ConfirmPassword":passconf,"Checked":checked};
     
     $.post("../../server/registerform.php",data,function(returnData){
-        console.log(returnData);
         if(returnData == "error_password_confirm"){ //If the user doesn't confirm their password, alert the user
             registerError("Please verify that your password is the same in both fields!");
         } else if(returnData == "user_exists"){ //If the username already exists, alert the user.
@@ -272,8 +270,6 @@ var updateStreak = function(value){
     $.post("../../server/updatestreak.php",{"Username":window._username,"Value":value},function(returnData){ //POST to update the streak
         if(returnData == "error_unknown"){
             displayError();
-        } else if(returnData == "user_updated"){
-            console.log("User updated!");
         }
     });
 }

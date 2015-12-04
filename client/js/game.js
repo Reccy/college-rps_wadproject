@@ -1,7 +1,6 @@
 var computerChoice;
 
 function compChoice(){
-    
     computerChoice = Math.random();// make computer's choice random
     if (computerChoice < 0.34) {
         computerChoice = "Rock";//If choice is below 0.34, choose Rock
@@ -10,7 +9,6 @@ function compChoice(){
     } else {
         computerChoice = "Scissors";//Else choose Scissors
     }
-
 }
  
  
