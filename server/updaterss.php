@@ -55,8 +55,7 @@
         
         //GET WINNING NUMBER FROM RSS
         $ratioStr = $sxeRSS->channel->item[1]->description;
-        preg_match_all('!\d+!', $ratioStr, $ratioNum);
-        $ratioNum = implode(' ', $ratioNum[0]);
+        $ratioNum = floatval($ratioStr);
         
         //UPDATE RSS IF HIGHER NUMBER
         if($maxRatio > $ratioNum){
